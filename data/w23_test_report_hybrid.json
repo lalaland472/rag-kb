@@ -1,0 +1,434 @@
+{
+  "date": "2026-08-28 09:51",
+  "mode": "hybrid",
+  "total": 20,
+  "full_hit": 15,
+  "partial": 3,
+  "fail": 2,
+  "error": 0,
+  "avg_latency": 8.0,
+  "results": [
+    {
+      "id": "A1",
+      "cat": "A",
+      "question": "What is the scaled dot-product attention formula in Transformer?",
+      "expect": "Attention",
+      "cite_docs": [
+        "GPTQ_2023",
+        "Attention_Is_All_You_Need_2017",
+        "Attention_Is_All_You_Need_2017",
+        "Attention_Is_All_You_Need_2017",
+        "Attention_Is_All_You_Need_2017"
+      ],
+      "hit_terms": [
+        "Attention"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "缩放点积注意力的公式为：  **Attention(Q, K, V) = softmax(QKᵀ / √dₖ) V**  其中 Q、K、V 分别是由查询、键和值组成的矩阵，dₖ 是键的维度，缩放因子 1/√dₖ 用于避免点积过大导致 sof",
+      "latency": 7.6
+    },
+    {
+      "id": "A2",
+      "cat": "A",
+      "question": "How does FAISS accelerate billion-scale similarity search on GPUs?",
+      "expect": "FAISS",
+      "cite_docs": [
+        "FAISS_2019",
+        "AWQ_2023",
+        "FlashAttention_2022",
+        "GPTQ_2023",
+        "DPO_2023"
+      ],
+      "hit_terms": [
+        "FAISS"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": false,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，FAISS通过利用GPU的并行计算能力来加速大规模向量检索，从而突破十亿级数据的性能瓶颈，实现高效的十亿级相似性搜索 [1]。",
+      "latency": 6.1
+    },
+    {
+      "id": "A3",
+      "cat": "A",
+      "question": "What is FlashAttention and how does it reduce memory?",
+      "expect": "FlashAttention",
+      "cite_docs": [
+        "FlashAttention_2022",
+        "DPO_2023",
+        "Attention_Is_All_You_Need_2017",
+        "vLLM_2023",
+        "FlashAttention_2022"
+      ],
+      "hit_terms": [
+        "FlashAttention"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "FlashAttention 是一种 IO 感知的精确注意力机制，通过分块计算（tiling）和重计算策略，减少 GPU 高带宽内存与片上 SRAM 之间的读写次数，从而降低内存占用并提升计算速度，同时保持与传统注意力完全一致的精确结果。[",
+      "latency": 6.9
+    },
+    {
+      "id": "A4",
+      "cat": "A",
+      "question": "Explain the KV cache and paged attention in vLLM serving.",
+      "expect": "vLLM",
+      "cite_docs": [
+        "vLLM_2023",
+        "FlashAttention_2022",
+        "vLLM_2023",
+        "vLLM_2023",
+        "vLLM_2023"
+      ],
+      "hit_terms": [
+        "vLLM"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "在 vLLM 中，KV cache 用于存储注意力计算中的键值缓存，但传统管理方式会造成内存碎片化和冗余复制，限制推理吞吐量 [1]。为此，vLLM 提出 PagedAttention，其核心是将 KV cache 组织为固定大小的 KV ",
+      "latency": 11.3
+    },
+    {
+      "id": "B1",
+      "cat": "B",
+      "question": "LoRA 是怎么减少微调参数的？",
+      "expect": "LoRA",
+      "cite_docs": [
+        "LoRA_2021",
+        "InstructGPT_2022",
+        "vLLM_2023",
+        "Attention_Is_All_You_Need_2017",
+        "LoRA_2021"
+      ],
+      "hit_terms": [
+        "LoRA"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的片段，LoRA 减少微调参数的核心思想是：在适应过程中，不要求权重矩阵的累积梯度更新具有完整秩（full-rank），而是通过设置一个较低的秩 r 来近似全量微调的表达能力，从而减少可训练参数的数量 [5]。片段还提到，当把 Lo",
+      "latency": 9.4
+    },
+    {
+      "id": "B2",
+      "cat": "B",
+      "question": "RAG 检索增强生成是什么意思，怎么工作的？",
+      "expect": "RAG",
+      "cite_docs": [
+        "RAG_Survey_2024",
+        "RAG_Lewis_2020",
+        "GraphRAG_2024",
+        "RAG_Survey_2024",
+        "RAG_Lewis_2020"
+      ],
+      "hit_terms": [
+        "RAG"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "RAG（检索增强生成）是一种利用外部知识库增强大语言模型生成能力的方法，其核心是把检索到的外部信息融入生成过程，以提升生成内容的准确性和可信度，尤其适用于知识密集型任务 [1]。具体实现上，RAG 将预训练的参数化生成模型与基于密集向量检索",
+      "latency": 7.1
+    },
+    {
+      "id": "B3",
+      "cat": "B",
+      "question": "哪些论文解决了大模型说假话、对齐用户意图的问题？",
+      "expect": "InstructGPT,DPO",
+      "cite_docs": [
+        "InstructGPT_2022",
+        "DPO_2023",
+        "ReAct_2022",
+        "GPT3_2020",
+        "InstructGPT_2022"
+      ],
+      "hit_terms": [
+        "InstructGPT",
+        "DPO"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，**InstructGPT**（片段 [1][5]）直接讨论了大模型生成不真实、有害、无帮助内容的问题，并旨在改进模型行为以符合用户期望与安全标准，即解决对齐用户意图的问题。   **DPO**（片段 [2]）涉及偏好对齐，",
+      "latency": 8.9
+    },
+    {
+      "id": "B4",
+      "cat": "B",
+      "question": "怎么让 AI 在回答前先搜索资料、不要瞎编？",
+      "expect": "Self_RAG,RAG,ReAct",
+      "cite_docs": [
+        "InstructGPT_2022",
+        "DPO_2023",
+        "AWQ_2023",
+        "GraphRAG_2024",
+        "Attention_Is_All_You_Need_2017"
+      ],
+      "hit_terms": [
+        "RAG"
+      ],
+      "hit_ratio": 0.3333333333333333,
+      "has_page": false,
+      "has_content": false,
+      "answer_excerpt": "根据提供的资料无法完整回答如何让 AI 在回答前先搜索资料、不瞎编。最接近的信息是 [4] 中的 GraphRAG 方法，它结合了检索增强生成（RAG）与图结构，用于提升摘要质量，说明可通过外部检索来辅助生成。但片段未具体说明实现机制或防止",
+      "latency": 8.8
+    },
+    {
+      "id": "B5",
+      "cat": "B",
+      "question": "树状检索和递归摘要是什么，哪篇论文提的？",
+      "expect": "RAPTOR",
+      "cite_docs": [
+        "RAPTOR_2024",
+        "Tree_of_Thoughts_2023",
+        "GraphRAG_2024",
+        "Self_RAG_2023",
+        "RAPTOR_2024"
+      ],
+      "hit_terms": [
+        "RAPTOR"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，“树状检索”和“递归摘要”出自 **RAPTOR** 论文 [1]。   RAPTOR 提出一种**递归抽象处理方法**，通过构建**树状组织**来增强检索能力，其核心是利用**层次化摘要结构**，以支持更高效、语义更丰富的",
+      "latency": 7.6
+    },
+    {
+      "id": "C1",
+      "cat": "C",
+      "question": "有哪几篇论文是关于大模型高效微调和参数压缩的？",
+      "expect": "LoRA,GPTQ,AWQ",
+      "cite_docs": [
+        "LoRA_2021",
+        "GPTQ_2023",
+        "GPT3_2020",
+        "RAG_Survey_2024",
+        "Generative_Agents_2023"
+      ],
+      "hit_terms": [
+        "LoRA",
+        "GPTQ"
+      ],
+      "hit_ratio": 0.6666666666666666,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，涉及大模型高效微调和参数压缩的论文片段有：  - **[1]**（LoRA）：提出低秩分解的高效微调方法，减少可训练参数量，属于参数高效微调领域。 - **[2]**（GPTQ）：讨论大模型推理阶段GPU资源瓶颈，并暗示需要",
+      "latency": 9.7
+    },
+    {
+      "id": "C2",
+      "cat": "C",
+      "question": "关于让多个 AI 智能体协作完成任务的论文",
+      "expect": "AutoGen,Generative_Agents",
+      "cite_docs": [
+        "AWQ_2023",
+        "AutoGen_2023",
+        "Generative_Agents_2023",
+        "AutoGen_2023",
+        "AWQ_2023"
+      ],
+      "hit_terms": [
+        "AutoGen",
+        "Generative_Agents"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的片段，关于让多个 AI 智能体协作完成任务的论文主要有以下内容：  - **MATHCHAT** 利用大语言模型智能体通过多轮对话协作解决具有挑战性的数学问题，强调智能体之间的交互式“交谈”以提升数学推理能力。[1] - **Au",
+      "latency": 9.3
+    },
+    {
+      "id": "C3",
+      "cat": "C",
+      "question": "关于模型评估和 LLM 作为裁判的进展",
+      "expect": "MT_Bench",
+      "cite_docs": [
+        "MT_Bench_2023",
+        "LoRA_2021",
+        "RAG_Survey_2024",
+        "MT_Bench_2023",
+        "AutoGen_2023"
+      ],
+      "hit_terms": [
+        "MT_Bench"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，关于模型评估和 LLM 作为裁判（LLM-as-a-Judge）的进展主要有以下内容：  - 研究系统性验证了强 LLM 在评估对话质量时与人类偏好的一致性，并探讨了其作为自动评估工具的可行性与局限性 [1]。 - LLM ",
+      "latency": 9.0
+    },
+    {
+      "id": "C4",
+      "cat": "C",
+      "question": "检索增强有哪些高级策略，比如假设文档和融合？",
+      "expect": "HyDE,RAPTOR",
+      "cite_docs": [
+        "GPT3_2020",
+        "DPO_2023",
+        "AWQ_2023",
+        "InstructGPT_2022",
+        "Self_RAG_2023"
+      ],
+      "hit_terms": [],
+      "hit_ratio": 0.0,
+      "has_page": true,
+      "has_content": false,
+      "answer_excerpt": "根据提供的资料，未提及“假设文档”和“融合”等高级检索增强策略。资料中最接近的内容是 Self-RAG 框架，它通过检索和自我反思来增强语言模型的质量与事实性，而非盲目检索固定数量的段落 [5]。因此，针对具体的高级策略（如假设文档、融合）",
+      "latency": 7.7
+    },
+    {
+      "id": "D1",
+      "cat": "D",
+      "question": "RAPTOR 和 GraphRAG 在组织知识上有什么不同？",
+      "expect": "RAPTOR,GraphRAG",
+      "cite_docs": [
+        "RAPTOR_2024",
+        "GraphRAG_2024",
+        "RAG_Survey_2024",
+        "GraphRAG_2024",
+        "GraphRAG_2024"
+      ],
+      "hit_terms": [
+        "RAPTOR",
+        "GraphRAG"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，两者组织知识的方式不同：  - **RAPTOR** 采用**分层文本表示**，将不同抽象层级的文本块组织起来，以便针对不同粒度的问题进行回答 [1]。 - **GraphRAG** 采用**图结构**组织知识，利用图的模块",
+      "latency": 8.3
+    },
+    {
+      "id": "D2",
+      "cat": "D",
+      "question": "BERT 和 Transformer 有什么关系？",
+      "expect": "BERT,Attention",
+      "cite_docs": [
+        "BERT_2018",
+        "GraphRAG_2024",
+        "Attention_Is_All_You_Need_2017",
+        "BERT_2018",
+        "BERT_2018"
+      ],
+      "hit_terms": [
+        "BERT",
+        "Attention"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "BERT 的模型架构是基于 Transformer 的：它是一种多层双向 Transformer 编码器，其实现参照了 Vaswani 等人提出的原始 Transformer 实现 [4]。同时，BERT 的核心方法就是通过深度双向 Tra",
+      "latency": 7.6
+    },
+    {
+      "id": "D3",
+      "cat": "D",
+      "question": "DPO 和传统的 RLHF 有什么区别？",
+      "expect": "DPO,InstructGPT",
+      "cite_docs": [
+        "RAPTOR_2024",
+        "Attention_Is_All_You_Need_2017",
+        "BERT_2018",
+        "AWQ_2023",
+        "FlashAttention_2022"
+      ],
+      "hit_terms": [],
+      "hit_ratio": 0.0,
+      "has_page": true,
+      "has_content": false,
+      "answer_excerpt": "根据提供的资料无法完整回答。所有片段均未涉及 DPO 或传统 RLHF 的内容，因此无法给出两者区别。",
+      "latency": 6.5
+    },
+    {
+      "id": "D4",
+      "cat": "D",
+      "question": "Self-RAG 和 ReAct 都涉及检索与推理，区别在哪？",
+      "expect": "Self_RAG,ReAct",
+      "cite_docs": [
+        "Self_RAG_2023",
+        "ReAct_2022",
+        "RAG_Lewis_2020",
+        "Self_RAG_2023",
+        "RAG_Lewis_2020"
+      ],
+      "hit_terms": [
+        "Self_RAG",
+        "ReAct"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的片段，Self-RAG 与 ReAct 的主要区别在于：Self-RAG 强调训练语言模型自适应按需检索，并生成特殊“反思”令牌对检索结果和自身生成内容进行自我评估与批判，从而提升准确性和可靠性 [1][4]；而 ReAct 则表",
+      "latency": 8.3
+    },
+    {
+      "id": "E1",
+      "cat": "E",
+      "question": "哪篇论文讲人类记忆的模拟？",
+      "expect": "Generative_Agents",
+      "cite_docs": [
+        "Generative_Agents_2023",
+        "FAISS_2019",
+        "AWQ_2023",
+        "GPT3_2020",
+        "RAG_Lewis_2020"
+      ],
+      "hit_terms": [
+        "Generative_Agents"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，[5]（来源：RAG Lewis）明确讨论了“记忆”的设计，提到记忆由原始文本组成，具有人类可读、可写的特性，可动态更新模型记忆，这与人类记忆的模拟相关。但资料中未明确说明该论文是专门讲人类记忆模拟的，因此只能给出这一最接近",
+      "latency": 8.2
+    },
+    {
+      "id": "E2",
+      "cat": "E",
+      "question": "思维树在24点游戏上的表现怎么样？",
+      "expect": "Tree_of_Thoughts",
+      "cite_docs": [
+        "Tree_of_Thoughts_2023",
+        "AWQ_2023",
+        "ReAct_2022",
+        "RAPTOR_2024",
+        "RAPTOR_2024"
+      ],
+      "hit_terms": [
+        "Tree_of_Thoughts"
+      ],
+      "hit_ratio": 1.0,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的片段，思维树（Tree of Thoughts）在24点游戏上的成功率达到了74%，而GPT-4配合链式思考提示的成功率仅为4%，显著提升了复杂推理任务的表现。[1]",
+      "latency": 5.7
+    },
+    {
+      "id": "E3",
+      "cat": "E",
+      "question": "请解释一下什么是 embedding 向量化",
+      "expect": "BERT,FAISS",
+      "cite_docs": [
+        "DPO_2023",
+        "AWQ_2023",
+        "BERT_2018",
+        "Tree_of_Thoughts_2023",
+        "Self_RAG_2023"
+      ],
+      "hit_terms": [
+        "BERT"
+      ],
+      "hit_ratio": 0.5,
+      "has_page": true,
+      "has_content": true,
+      "answer_excerpt": "根据提供的资料，embedding（词嵌入）向量化是指：将词汇表中的单词或短语映射为实数向量，从而在向量空间中表示它们，使得单词之间的相似性和使用上下文可以被度量。它是自然语言处理中一组语言建模和特征学习技术的统称。[5]",
+      "latency": 6.2
+    }
+  ]
+}
