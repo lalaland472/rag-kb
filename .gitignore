@@ -1,0 +1,24 @@
+# ── 敏感信息（绝不提交）──
+config/credentials.env
+*.env
+
+# ── 原始素材：论文 PDF（太大 + 版权，用 download_papers.py 自行获取）──
+data/papers/
+*.pdf
+
+# ── 数据产物（可由脚本重新生成，体积大）──
+data/chunks/
+data/index/
+data/parsed_docs.json
+data/chunk_log*.txt
+
+# ── 中间/临时文件 ──
+__pycache__/
+*.pyc
+*.log
+/tmp/
+
+# ── 系统 ──
+.DS_Store
+.idea/
+.vscode/

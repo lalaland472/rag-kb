@@ -1,0 +1,857 @@
+{
+  "n_queries": 100,
+  "recall_at_5": 0.91,
+  "mrr": 0.8076666666666666,
+  "avg_first_rank": 1.3516483516483517,
+  "search_time_ms": 160.6297274120152,
+  "confusion_docs": {
+    "Lost_in_the_Middle_2023": [
+      "Generative_Agents_2023"
+    ],
+    "BERT_2018": [
+      "ReAct_2022"
+    ],
+    "AutoGen_2023": [
+      "GPT3_2020"
+    ],
+    "LoRA_2021": [
+      "FlashAttention_2022",
+      "RAPTOR_2024"
+    ],
+    "Attention_Is_All_You_Need_2017": [
+      "DPO_2023"
+    ],
+    "GPT3_2020": [
+      "LoRA_2021"
+    ],
+    "InstructGPT_2022": [
+      "Self_RAG_2023"
+    ],
+    "Self_RAG_2023": [
+      "HyDE_2022"
+    ],
+    "Generative_Agents_2023": [
+      "ReAct_2022"
+    ],
+    "GPTQ_2023": [
+      "HyDE_2022"
+    ],
+    "MT_Bench_2023": [
+      "GPT3_2020"
+    ],
+    "DPO_2023": [
+      "AWQ_2023"
+    ],
+    "RAPTOR_2024": [
+      "InstructGPT_2022"
+    ],
+    "Tree_of_Thoughts_2023": [
+      "RAG_Lewis_2020"
+    ],
+    "vLLM_2023": [
+      "Self_RAG_2023"
+    ]
+  },
+  "detail": [
+    {
+      "anchor_doc": "Lost_in_the_Middle_2023",
+      "chunk": 20,
+      "query": "To facilitate further work on understanding and im",
+      "top1_doc": "Generative_Agents_2023",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "ReAct_2022",
+      "chunk": 41,
+      "query": "we note that there is one frequent error pattern s",
+      "top1_doc": "ReAct_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 388,
+      "query": "question: Is the word ‘outfitter’ used in the same",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GraphRAG_2024",
+      "chunk": 11,
+      "query": "2 Background 2.1 RAG Approaches and Systems RAG ge",
+      "top1_doc": "GraphRAG_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "BERT_2018",
+      "chunk": 23,
+      "query": "(2017) as well as excellent guides such as “The An",
+      "top1_doc": "ReAct_2022",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "Generative_Agents_2023",
+      "chunk": 47,
+      "query": "3.1 Agent Avatar and Communication A community of ",
+      "top1_doc": "Generative_Agents_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "MT_Bench_2023",
+      "chunk": 97,
+      "query": "[36] Keisuke Sakaguchi, Ronan Le Bras, Chandra Bha",
+      "top1_doc": "MT_Bench_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AWQ_2023",
+      "chunk": 70,
+      "query": "We take one example from each table to analyze the",
+      "top1_doc": "AWQ_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Generative_Agents_2023",
+      "chunk": 183,
+      "query": "Lastly, the robustness of generative agents is sti",
+      "top1_doc": "Generative_Agents_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "RAPTOR_2024",
+      "chunk": 155,
+      "query": "... Alas! the clock had struck Eleven. She found n",
+      "top1_doc": "RAPTOR_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "FlashAttention_2022",
+      "chunk": 71,
+      "query": "Runtime grows quadratically with sequence length, ",
+      "top1_doc": "FlashAttention_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AWQ_2023",
+      "chunk": 6,
+      "query": "We evaluate MathChat with GPT-4 on the MATH datase",
+      "top1_doc": "AWQ_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "FlashAttention_2022",
+      "chunk": 150,
+      "query": "14: On chip, compute ˜Pdropped 𝑖𝑗 = dropout(˜P𝑖𝑗, ",
+      "top1_doc": "FlashAttention_2022",
+      "hit": true,
+      "rank": 4
+    },
+    {
+      "anchor_doc": "ReAct_2022",
+      "chunk": 118,
+      "query": "The film is about the rise and fall of influential",
+      "top1_doc": "ReAct_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "FAISS_2019",
+      "chunk": 107,
+      "query": "Assuming computa- tion scales with GEMM cost for t",
+      "top1_doc": "FAISS_2019",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Generative_Agents_2023",
+      "chunk": 49,
+      "query": "John Lin knows his neighbor, Yuriko Yamamoto, well",
+      "top1_doc": "Generative_Agents_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AutoGen_2023",
+      "chunk": 302,
+      "query": "Never flip roles! You will always instruct me",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 5
+    },
+    {
+      "anchor_doc": "Self_RAG_2023",
+      "chunk": 176,
+      "query": "– Yes, I have a German shepherd in my house and sh",
+      "top1_doc": "Self_RAG_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AWQ_2023",
+      "chunk": 62,
+      "query": "Failure cases of this type are typically tricky pr",
+      "top1_doc": "AWQ_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "FlashAttention_2022",
+      "chunk": 56,
+      "query": "Averaged over 10 runs on 8×A100 GPUs",
+      "top1_doc": "FlashAttention_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "BERT_2018",
+      "chunk": 59,
+      "query": "We ﬁne-tune the model for 3 epochs with a learning",
+      "top1_doc": "BERT_2018",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "HyDE_2022",
+      "chunk": 15,
+      "query": "2 Related Works Dense Retrieval (Lee et al",
+      "top1_doc": "HyDE_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "ReAct_2022",
+      "chunk": 62,
+      "query": "Qualitatively, we observed that ReAct-IM often mad",
+      "top1_doc": "ReAct_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPTQ_2023",
+      "chunk": 97,
+      "query": "SQuAD: 100,000+ questions for machine comprehensio",
+      "top1_doc": "GPTQ_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 295,
+      "query": "Figure 16: RealToxicityPrompts: prompting, example",
+      "top1_doc": "InstructGPT_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "RAG_Lewis_2020",
+      "chunk": 93,
+      "query": "doi: 10.18653/v1/2020.acl-main.228. URL https://ww",
+      "top1_doc": "RAG_Lewis_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GraphRAG_2024",
+      "chunk": 154,
+      "query": "The plaza has relationships with the Harmony Assem",
+      "top1_doc": "GraphRAG_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Attention_Is_All_You_Need_2017",
+      "chunk": 17,
+      "query": "This masking, combined with fact that the output e",
+      "top1_doc": "Attention_Is_All_You_Need_2017",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "LoRA_2021",
+      "chunk": 49,
+      "query": "We also replicate Houlsby et al",
+      "top1_doc": "FlashAttention_2022",
+      "hit": true,
+      "rank": 3
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 142,
+      "query": "{2,3,4,5}D{+,-} is 2, 3, 4, and 5 digit addition o",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "Attention_Is_All_You_Need_2017",
+      "chunk": 28,
+      "query": "Another way of describing this is as two convoluti",
+      "top1_doc": "DPO_2023",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "AutoGen_2023",
+      "chunk": 15,
+      "query": "2 AutoGen also provides a collection of multi-agen",
+      "top1_doc": "AutoGen_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 150,
+      "query": "For example, we could have labelers edit model res",
+      "top1_doc": "InstructGPT_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Lost_in_the_Middle_2023",
+      "chunk": 74,
+      "query": "Model performance saturates long before retriever ",
+      "top1_doc": "Lost_in_the_Middle_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "RAPTOR_2024",
+      "chunk": 18,
+      "query": "Reading extracted snippets from technical or scien",
+      "top1_doc": "RAPTOR_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 79,
+      "query": "It thus assigns probability not only to the correc",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "MT_Bench_2023",
+      "chunk": 25,
+      "query": "While largely overlooked by existing LLM benchmark",
+      "top1_doc": "MT_Bench_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 81,
+      "query": "While this setting decreases the performance of th",
+      "top1_doc": "LoRA_2021",
+      "hit": true,
+      "rank": 5
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 321,
+      "query": "55 Table 14: Automatic evaluations GPT models SFT ",
+      "top1_doc": "InstructGPT_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "LoRA_2021",
+      "chunk": 169,
+      "query": "Rank r val loss BLEU NIST METEOR ROUGE L CIDEr 1 1",
+      "top1_doc": "LoRA_2021",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 185,
+      "query": "arXiv preprint arXiv:1804",
+      "top1_doc": "Self_RAG_2023",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "AutoGen_2023",
+      "chunk": 216,
+      "query": "In contrast, the automated chat by AutoGen is more",
+      "top1_doc": "AutoGen_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Self_RAG_2023",
+      "chunk": 142,
+      "query": "Performance of the Critic C",
+      "top1_doc": "HyDE_2022",
+      "hit": true,
+      "rank": 3
+    },
+    {
+      "anchor_doc": "ReAct_2022",
+      "chunk": 186,
+      "query": "28 Published as a conference paper at ICLR 2023 Ac",
+      "top1_doc": "ReAct_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "RAG_Survey_2024",
+      "chunk": 94,
+      "query": "GPT-4). Fine-tuning of LLM can also be coordinated",
+      "top1_doc": "RAG_Survey_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "FAISS_2019",
+      "chunk": 139,
+      "query": "For now, we assume w = 1, so c = ℓ",
+      "top1_doc": "FAISS_2019",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Generative_Agents_2023",
+      "chunk": 52,
+      "query": "The complete natural language description of the a",
+      "top1_doc": "ReAct_2022",
+      "hit": true,
+      "rank": 4
+    },
+    {
+      "anchor_doc": "Tree_of_Thoughts_2023",
+      "chunk": 28,
+      "query": "Algorithm 1 ToT-BFS(x, pθ, G, k, V, T, b) Require:",
+      "top1_doc": "Tree_of_Thoughts_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GraphRAG_2024",
+      "chunk": 67,
+      "query": "Global approaches vs",
+      "top1_doc": "GraphRAG_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "vLLM_2023",
+      "chunk": 14,
+      "query": "2 show that only 20.4% - 38.2% of the KV cache mem",
+      "top1_doc": "vLLM_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 193,
+      "query": "arXiv preprint arXiv:1905",
+      "top1_doc": "InstructGPT_2022",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "AutoGen_2023",
+      "chunk": 279,
+      "query": "√ 252 : 252 can be decomposed as 36*7, where 36 is",
+      "top1_doc": "AutoGen_2023",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "RAG_Survey_2024",
+      "chunk": 90,
+      "query": "This allows the LLM to filter out documents with p",
+      "top1_doc": "RAG_Survey_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Generative_Agents_2023",
+      "chunk": 194,
+      "query": "Joon Sung Park was supported by the Microsoft Rese",
+      "top1_doc": "Generative_Agents_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AWQ_2023",
+      "chunk": 28,
+      "query": "… k_values =  sp.solve((eq1, eq2),  (k1, k2), dict",
+      "top1_doc": "AWQ_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 282,
+      "query": "For each minibatch, we compute the PPO gradients a",
+      "top1_doc": "InstructGPT_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 174,
+      "query": "This table shows the results of a two-sample T-Tes",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "DPO_2023",
+      "chunk": 129,
+      "query": "derived the DPO objective; proved the theoretical ",
+      "top1_doc": "DPO_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "RAG_Survey_2024",
+      "chunk": 68,
+      "query": "Language models often struggle when dealing with s",
+      "top1_doc": "RAG_Survey_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 3,
+      "query": "At the same time, we also identify some datasets w",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPTQ_2023",
+      "chunk": 27,
+      "query": "(3) This method comes with a vectorized implementa",
+      "top1_doc": "HyDE_2022",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "LoRA_2021",
+      "chunk": 17,
+      "query": "Using language modeling as an example, there are t",
+      "top1_doc": "RAPTOR_2024",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "FlashAttention_2022",
+      "chunk": 114,
+      "query": "14 [70] Jonathan Ragan-Kelley, Connelly Barnes, An",
+      "top1_doc": "FlashAttention_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "vLLM_2023",
+      "chunk": 83,
+      "query": "As the number of requests and their outputs grow, ",
+      "top1_doc": "vLLM_2023",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "RAG_Survey_2024",
+      "chunk": 53,
+      "query": "On the contrary, it requires additional effort to ",
+      "top1_doc": "RAG_Survey_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "FAISS_2019",
+      "chunk": 50,
+      "query": "Swaps with a stride a multiple of 32 occur directl",
+      "top1_doc": "FAISS_2019",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "DPO_2023",
+      "chunk": 143,
+      "query": "We consider the general Plackett-Luce (with the Br",
+      "top1_doc": "DPO_2023",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "BERT_2018",
+      "chunk": 55,
+      "query": "We treat ques- tions that do not have an answer as",
+      "top1_doc": "BERT_2018",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AutoGen_2023",
+      "chunk": 52,
+      "query": "The results show that the interactive retrieval me",
+      "top1_doc": "AutoGen_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AutoGen_2023",
+      "chunk": 16,
+      "query": "(Section 3 and Appendix D) 2 The AutoGen Framework",
+      "top1_doc": "AutoGen_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Self_RAG_2023",
+      "chunk": 97,
+      "query": "Wizard of wikipedia: Knowledge-powered conversatio",
+      "top1_doc": "Self_RAG_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Lost_in_the_Middle_2023",
+      "chunk": 58,
+      "query": "As a result, decoder-only models cannot attend to ",
+      "top1_doc": "Lost_in_the_Middle_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Self_RAG_2023",
+      "chunk": 69,
+      "query": "Comparison against baselines with retrieval",
+      "top1_doc": "Self_RAG_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 445,
+      "query": "Model cards for model reporting, 2018",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Generative_Agents_2023",
+      "chunk": 176,
+      "query": "For instance, social simulacra have demonstrated t",
+      "top1_doc": "Generative_Agents_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "vLLM_2023",
+      "chunk": 58,
+      "query": "The remaining slot is reserved for the subsequent ",
+      "top1_doc": "vLLM_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "RAG_Survey_2024",
+      "chunk": 171,
+      "query": "[60] P. Xu, W. Ping, X. Wu, L. McAfee, C. Zhu, Z. ",
+      "top1_doc": "RAG_Survey_2024",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 40,
+      "query": "Brown et al., 2020; Fedus et al., 2021; Rae et al.",
+      "top1_doc": "InstructGPT_2022",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "RAG_Lewis_2020",
+      "chunk": 41,
+      "query": "MS-MARCO SotA is [4], FEVER-3 is [68] and FEVER-2 ",
+      "top1_doc": "RAG_Lewis_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "ReAct_2022",
+      "chunk": 136,
+      "query": "I need to search First for Women next",
+      "top1_doc": "ReAct_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "MT_Bench_2023",
+      "chunk": 59,
+      "query": "Comparing GPT-4 and other LLM judges, we find they",
+      "top1_doc": "MT_Bench_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "MT_Bench_2023",
+      "chunk": 71,
+      "query": "The training details are in Appendix E",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 412,
+      "query": "Edinburgh’s phrase-based machine translation syste",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "DPO_2023",
+      "chunk": 154,
+      "query": "We linearly warmup the learning rate from 0 to 1e-",
+      "top1_doc": "DPO_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 357,
+      "query": "They Correct Answer → bake them, then frost and de",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "DPO_2023",
+      "chunk": 6,
+      "query": "While existing methods typically steer LMs to matc",
+      "top1_doc": "AWQ_2023",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "InstructGPT_2022",
+      "chunk": 316,
+      "query": "The results are shown in Figure 33",
+      "top1_doc": "InstructGPT_2022",
+      "hit": true,
+      "rank": 5
+    },
+    {
+      "anchor_doc": "RAPTOR_2024",
+      "chunk": 162,
+      "query": "We observe that between 18",
+      "top1_doc": "InstructGPT_2022",
+      "hit": false,
+      "rank": null
+    },
+    {
+      "anchor_doc": "GraphRAG_2024",
+      "chunk": 117,
+      "query": "Trivedi, H., Balasubramanian, N., Khot, T., and Sa",
+      "top1_doc": "GraphRAG_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "LoRA_2021",
+      "chunk": 11,
+      "query": "W or W0 refers to a pre- trained weight matrix and",
+      "top1_doc": "LoRA_2021",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "RAPTOR_2024",
+      "chunk": 43,
+      "query": "The collapsed tree approach consistently performs ",
+      "top1_doc": "RAPTOR_2024",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "Tree_of_Thoughts_2023",
+      "chunk": 87,
+      "query": "In North American Chapter of the Association for C",
+      "top1_doc": "RAG_Lewis_2020",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "vLLM_2023",
+      "chunk": 8,
+      "query": "Close to 30% of the memory is used to store the dy",
+      "top1_doc": "Self_RAG_2023",
+      "hit": true,
+      "rank": 2
+    },
+    {
+      "anchor_doc": "Self_RAG_2023",
+      "chunk": 163,
+      "query": "8https://github.com/facebookresearch/atlas 9https:",
+      "top1_doc": "Self_RAG_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "RAG_Lewis_2020",
+      "chunk": 116,
+      "query": "[51] Colin Raffel, Noam Shazeer, Adam Roberts, Kat",
+      "top1_doc": "RAG_Lewis_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "FlashAttention_2022",
+      "chunk": 207,
+      "query": "We only measure memory footprint once, since it do",
+      "top1_doc": "FlashAttention_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "AutoGen_2023",
+      "chunk": 44,
+      "query": "We demon- strate that this system can effectively ",
+      "top1_doc": "AutoGen_2023",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPT3_2020",
+      "chunk": 216,
+      "query": "Quantitatively, GPT-3’s in-context learning perfor",
+      "top1_doc": "GPT3_2020",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "HyDE_2022",
+      "chunk": 68,
+      "query": "2021a. Pyserini: A Python toolkit for reproducible",
+      "top1_doc": "HyDE_2022",
+      "hit": true,
+      "rank": 1
+    },
+    {
+      "anchor_doc": "GPTQ_2023",
+      "chunk": 43,
+      "query": "We begin our experiments by validating the accurac",
+      "top1_doc": "GPTQ_2023",
+      "hit": true,
+      "rank": 1
+    }
+  ]
+}
