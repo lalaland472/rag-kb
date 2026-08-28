@@ -92,8 +92,12 @@ HYDE_SYSTEM = (
 )
 
 
-def hyde_query(api_key, base_url, model, query, max_tokens=120):
-    """用 LLM 把 query 改写成适合语义检索的学术英文。失败则原样返回 query。"""
+def hyde_query(api_key, base_url, model, query, max_tokens=200):
+    """用 LLM 把 query 改写成适合语义检索的学术英文。失败/空结果则原样返回 query。
+
+    ⚠️ deepseek-v4-flash 是 reasoning 模型，max_tokens 需给足（≥200），
+    否则预算被 reasoning_tokens 吃光导致 content 为空。
+    """
     try:
         url = base_url.rstrip("/") + "/chat/completions"
         payload = {
@@ -112,7 +116,11 @@ def hyde_query(api_key, base_url, model, query, max_tokens=120):
         )
         with urllib.request.urlopen(req, timeout=60) as resp:
             r = json.load(resp)
-        return r["choices"][0]["message"]["content"].strip()
+        out = r["choices"][0]["message"].get("content", "").strip()
+        # 空/只含关键词行 → 视为失败，退回原 query
+        if not out or len(out) < 8:
+            return query
+        return out
     except Exception:
         return query
 
