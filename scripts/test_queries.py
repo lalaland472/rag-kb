@@ -64,12 +64,12 @@ def load_env():
     return env
 
 
-def run_one(item, mode, use_generation):
+def run_one(item, mode, use_generation, use_rerank=False):
     """跑单条 query，返回结果 dict。"""
     qid, cat, question, expect = item
     from generate_answer import generate_answer
     t0 = time.time()
-    res = generate_answer(question, mode=mode, k=5)
+    res = generate_answer(question, mode=mode, k=5, rerank=use_rerank)
     latency = time.time() - t0
     answer = res["answer"]
     cites = res["meta"]["citations"]
@@ -98,20 +98,21 @@ def run_one(item, mode, use_generation):
 def main():
     quick = "--quick" in sys.argv
     force_mode = None
+    use_rerank = "--rerank" in sys.argv
     if "--mode" in sys.argv:
         force_mode = sys.argv[sys.argv.index("--mode") + 1]
 
     mode = force_mode or "flat"
     use_gen = not quick
     env = load_env()
-    print(f"RAG-KB 端到端测试 | {len(TEST_SET)} 条 | mode={mode} | 生成={'开' if use_gen else '关(仅召回)'}")
+    print(f"RAG-KB 端到端测试 | {len(TEST_SET)} 条 | mode={mode} rerank={use_rerank} | 生成={'开' if use_gen else '关(仅召回)'}")
     print("=" * 70)
 
     results = []
     for i, item in enumerate(TEST_SET, 1):
         qid, cat, question, expect = item
         try:
-            r = run_one(item, mode, use_gen)
+            r = run_one(item, mode, use_gen, use_rerank=use_rerank)
             results.append(r)
             hit = "✓" if r["hit_ratio"] == 1.0 and r["has_content"] else "△" if r["hit_ratio"] > 0 else "✗"
             content = "" if r["has_content"] else " [无内容]"
