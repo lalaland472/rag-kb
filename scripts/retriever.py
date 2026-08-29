@@ -21,6 +21,72 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(BASE, "..", "data")
 INDEX = os.path.join(DATA, "index")
 
+# ⚠️ Cross-encoder 重排（W23 Day 6 优化）：向量召回后，用 bge-reranker-base
+# 精确计算 query↔chunk 匹配分，把"语义接近但话题不同"的片段压下去。
+# 架构图里预留的"Cross-encoder 重排序（可选）"落地。
+_RERANKER = None
+_RERANKER_NAME = "BAAI/bge-reranker-base"
+_CHUNKS_DIR = os.path.join(DATA, "chunks")
+_CHUNK_CACHE = None
+
+
+def _load_chunks_cache():
+    """doc_id -> {chunk_id: text} 缓存（与 generate_answer 同构，避免循环依赖）"""
+    global _CHUNK_CACHE
+    if _CHUNK_CACHE is not None:
+        return _CHUNK_CACHE
+    cache = {}
+    import glob as _glob
+    for f in _glob.glob(os.path.join(_CHUNKS_DIR, "*.json")):
+        try:
+            data = json.load(open(f))
+        except Exception:
+            continue
+        if isinstance(data, list):
+            for c in data:
+                doc = c.get("doc_id")
+                ch = c.get("chunk_id")
+                if doc is not None and ch is not None:
+                    cache.setdefault(doc, {})[ch] = c.get("text", "")
+    _CHUNK_CACHE = cache
+    return cache
+
+
+def chunk_text(doc_id, chunk_id):
+    """按 doc_id+chunk_id 取 chunk 原文。"""
+    return _load_chunks_cache().get(doc_id, {}).get(chunk_id, "")
+
+
+def _get_reranker():
+    global _RERANKER
+    if _RERANKER is None:
+        from sentence_transformers import CrossEncoder
+        _RERANKER = CrossEncoder(_RERANKER_NAME)
+    return _RERANKER
+
+
+def _rerank_chunks(query, items, top_k=5):
+    """对向量召回结果 items（dict 列表，含 text）做 Cross-encoder 重排，
+    返回重排后的 top_k 列表（每项附加 rerank_score）。items 里缺 text 的忽略。"""
+    pairs = []
+    valid = []
+    for it in items:
+        t = (it.get("text") or "").strip()
+        if t:
+            pairs.append((query, t[:1000]))
+            valid.append(it)
+    if not pairs:
+        return items[:top_k]
+    scores = _get_reranker().predict(pairs)
+    scored = [(s, v) for s, v in zip(scores, valid)]
+    scored.sort(key=lambda x: -x[0])
+    out = []
+    for s, v in scored[:top_k]:
+        v = dict(v)
+        v["rerank_score"] = float(s)
+        out.append(v)
+    return out
+
 
 class HybridRetriever:
     """Flat + RAPTOR 摘要混合检索器。"""
@@ -86,13 +152,14 @@ class HybridRetriever:
                 scores[key] = scores.get(key, 0) + 1.0 / (delta + rank + 1)
         return sorted(scores.items(), key=lambda x: -x[1])
 
-    def hybrid_retrieve(self, query, k=5, flat_k=8, summary_k=8, summary_weight=3.0):
+    def hybrid_retrieve(self, query, k=5, flat_k=8, summary_k=8, summary_weight=3.0, rerank=False, rerank_top=20):
         """混合检索主入口（纯加权 RRF）。
 
         核心：RRF 基础上，摘要层命中的 doc 获得额外权重提升——
         因为摘要是对主题的概括，命中比叶子词面相似更有意义。
         纯加权 RRF，不做 Flat 保护（保持主题检索强度）。
         精确句子召回场景请用 mode='flat'。
+        rerank=True：对融合后的叶子候选做 Cross-encoder 重排，过滤无关片段。
         """
         flat_res = self.flat_search(query, flat_k)
         summ_res = self.summary_search(query, summary_k)
@@ -116,43 +183,65 @@ class HybridRetriever:
         final_docs = sorted(doc_score.keys(),
                             key=lambda d: (-doc_score[d], -doc_flat_best.get(d, 0)))
 
+        # ⚠️ 可选：对 top 叶子候选做 Cross-encoder 重排，压掉"语义接近但话题不同"的片段
+        flat_reranked = flat_res
+        if rerank and flat_res:
+            cands = []
+            for r in flat_res:
+                rr = dict(r)
+                rr["text"] = chunk_text(r["doc_id"], r["chunk_id"])
+                cands.append(rr)
+            flat_reranked = _rerank_chunks(query, cands, top_k=k)
+
         return {
             "query": query,
             "flat_top": flat_res,
+            "flat_reranked": flat_reranked if rerank else flat_res,
             "summary_top": summ_res,
             "summary_hits": [s["doc_id"] for s in summ_res if s["doc_id"] != "__ROOT__"],
             "fused_docs": final_docs[:k],
-            "k": k,
+            "k": k, "rerank": rerank,
         }
 
-    def retrieve(self, query, k=5, mode="flat", **kw):
+    def retrieve(self, query, k=5, mode="flat", rerank=False, rerank_top=20, **kw):
         """双模式检索引擎入口。
 
         mode='flat'（默认）: 仅 Flat 叶子检索，返回 chunk 级来源，高精度精确召回。
         mode='hybrid'     : Flat + RAPTOR 摘要加权融合，返回 doc 级来源，强主题检索。
+
+        rerank=True（W23 Day 6 优化）: 向量召回 rerank_top 条后，用 Cross-encoder
+        重排取 top-k，把"语义接近但话题不同"的不相关片段压下去。
         """
         if mode == "hybrid":
-            return self.hybrid_retrieve(query, k=k, **kw)
+            return self.hybrid_retrieve(query, k=k, rerank=rerank, rerank_top=rerank_top, **kw)
         # flat 默认：返回叶子 top-k，带来源
         qv = self._encode(query)
-        D, I = self.leaf_index.search(qv.reshape(1, -1), k)
+        # 若需重排，先召回更多候选，并带上原文供 reranker 打分
+        cand_k = rerank_top if rerank else k
+        D, I = self.leaf_index.search(qv.reshape(1, -1), cand_k)
         flat = []
         for score, gid in zip(D[0], I[0]):
             if gid < 0 or gid >= len(self.metadata):
                 continue
             m = self.metadata[gid]
             flat.append({
-                "gid": int(gid), "score": float(score),
+                "gid": int(gid), "score": float(score),  # ⚠️ L2 距离，越小越相似
                 "doc_id": m["doc_id"], "chunk_id": m["chunk_id"],
                 "source": m.get("source", m["doc_id"]), "is_summary": False,
             })
+        if rerank and flat:
+            # 补上原文供 reranker 打分
+            for r in flat:
+                r["text"] = chunk_text(r["doc_id"], r["chunk_id"])
+            flat = _rerank_chunks(query, flat, top_k=k)
         docs, seen = [], set()
         for r in flat:
             if r["doc_id"] not in seen:
                 seen.add(r["doc_id"])
                 docs.append(r["doc_id"])
         return {"query": query, "flat_top": flat, "summary_top": [],
-                "summary_hits": [], "fused_docs": docs[:k], "mode": "flat", "k": k}
+                "summary_hits": [], "fused_docs": docs[:k], "mode": "flat", "k": k,
+                "rerank": rerank}
 
 
 def main():
@@ -164,26 +253,33 @@ def main():
     k = 5
     debug = False
     mode = "flat"
+    rerank = False
     args = sys.argv[2:]
     if "--k" in args:
         k = int(args[args.index("--k") + 1])
     if "--mode" in args:
         mode = args[args.index("--mode") + 1]
+    if "--rerank" in args:
+        rerank = True
     if "--debug" in args:
         debug = True
 
     print("加载检索器 ...")
     retriever = HybridRetriever()
-    result = retriever.retrieve(query, k=k, mode=mode)
+    result = retriever.retrieve(query, k=k, mode=mode, rerank=rerank)
 
     print(f"\n{'='*60}")
-    print(f"🔍 查询: {query} (top-{k}, mode={mode})")
+    print(f"🔍 查询: {query} (top-{k}, mode={mode}, rerank={rerank})")
     print(f"{'='*60}")
 
     if debug:
         print("\n[Flat 叶子 top-5]")
         for r in result["flat_top"][:5]:
             print(f"  {r['score']:.4f}  {r['doc_id']} 块{r['chunk_id']}")
+        if rerank:
+            print("\n[重排后 top-k (Cross-encoder)]")
+            for r in result["flat_top"][:k]:
+                print(f"  {r.get('rerank_score', 0):.4f}  {r['doc_id']} 块{r['chunk_id']}")
         print("\n[RAPTOR 摘要 top-5]")
         for r in result["summary_top"][:5]:
             extra = "" if r["doc_id"] != "__ROOT__" else " (跨篇根)"

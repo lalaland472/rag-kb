@@ -328,7 +328,7 @@ def generate_answer(query, mode="flat", k=5, max_tokens=600, debug=False, **kw):
         search_query = hyde_query(api_key, base_url, model, query)
         if debug and search_query != query:
             print(f"\n[HyDE] {query} →\n       {search_query}\n")
-    result = retriever.retrieve(search_query, k=k, mode=mode)
+    result = retriever.retrieve(search_query, k=k, mode=mode, rerank=kw.pop("rerank", mode != "hybrid"), rerank_top=kw.pop("rerank_top", 20))
 
     # 取 top chunk 原文作为生成上下文
     #   flat 模式  ：直接按 top-k 叶子 chunk 取原文（精确句子召回）

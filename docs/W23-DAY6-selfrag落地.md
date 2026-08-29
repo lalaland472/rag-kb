@@ -46,3 +46,18 @@
 
 ---
 📚 W23 Day 6 · 2026-08-29
+
+## 五、残留问题修复：引用召回不精准（Cross-encoder 重排）
+
+**问题**：flat 模式 top-5 混入不相关片段（问 Self-RAG 却召回 BERT MLM 训练段落、Lost-in-the-Middle）
+**根因**：BGE-small 向量召回对"中英混合 query"判别有限，把"语义接近但话题不同"的片段误判相近
+**修复**：落地架构图预留的 Cross-encoder 重排（bge-reranker-base，本地已缓存）
+- 向量召回 top-20 → reranker 逐个算 query↔chunk 匹配分 → 重排取 top-5
+- 验证差异：BERT 块32 的 rerank 分 0.0007（几乎为0），被彻底压出 top-5
+- 端到端：strict 问答引用从"Self_RAG+BERT+LostInMiddle"收敛为"全 Self_RAG"
+
+**改动文件**：
+- retriever.py：+_rerank_chunks() / +chunk_text()（内置缓存，消除循环导入）/ retrieve()、hybrid_retrieve() 加 rerank、rerank_top 参数
+- generate_answer.py：flat 模式默认开启 rerank
+
+**注意**：rerank 首次加载模型较慢（端到端 40.9s），后续调用有缓存
