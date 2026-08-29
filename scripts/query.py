@@ -68,11 +68,12 @@ def format_answer(res):
     return "\n".join(lines)
 
 
-def ask_once(question, mode, k, interactive=False, style="default", retrieval_check=False, llm_only=False):
+def ask_once(question, mode, k, interactive=False, style="default", retrieval_check=False, llm_only=False, no_rerank=False):
     """单次问答，带耗时统计。"""
     t0 = time.time()
     res = generate_answer(question, mode=mode, k=k, style=style,
-                          retrieval_check=retrieval_check, llm_only=llm_only)
+                          retrieval_check=retrieval_check, llm_only=llm_only,
+                          rerank=not no_rerank)
     res["meta"]["latency"] = time.time() - t0
     if interactive:
         print(format_answer(res))
@@ -142,7 +143,7 @@ def main():
     args = sys.argv[1:]
     # 支持 --mode / --k / --style / --retrieval-check / --llm-only / --interactive
     mode, k = "flat", 5
-    style, retrieval_check, llm_only = "default", False, False
+    style, retrieval_check, llm_only, no_rerank = "default", False, False, False
     interactive = False
     positionals = []
 
@@ -164,6 +165,9 @@ def main():
         elif a == "--llm-only":
             llm_only = True
             i += 1
+        elif a == "--no-rerank":
+            no_rerank = True
+            i += 1
         elif a in ("--interactive", "-i"):
             interactive = True
             i += 1
@@ -177,9 +181,9 @@ def main():
         return
 
     question = " ".join(positionals)
-    print(f"🔍 查询: {question} (mode={mode}, k={k}, style={style}, rc={retrieval_check}, lo={llm_only})")
+    print(f"🔍 查询: {question} (mode={mode}, k={k}, style={style}, rc={retrieval_check}, lo={llm_only}, noRerank={no_rerank})")
     res = ask_once(question, mode, k, style=style,
-                   retrieval_check=retrieval_check, llm_only=llm_only)
+                   retrieval_check=retrieval_check, llm_only=llm_only, no_rerank=no_rerank)
     print(format_answer(res))
 
 

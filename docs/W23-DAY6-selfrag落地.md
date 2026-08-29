@@ -61,3 +61,44 @@
 - generate_answer.py：flat 模式默认开启 rerank
 
 **注意**：rerank 首次加载模型较慢（端到端 40.9s），后续调用有缓存
+
+## 六、flat 回归测试：rerank 量化验证（rerank vs 基线）
+
+用 Day 4 的 20 条测试集重跑，对比 无rerank 基线 vs 带rerank：
+
+### 核心指标
+| 指标 | 基线(无rerank) | rerank | 变化 |
+|------|:---:|:---:|:---:|
+| 完全命中+有内容 | 10/20 | **12/20** | +20% |
+| 未命中 | 2 | **1** | 改善 |
+| 平均耗时 | 8.1s | 33.0s | +4x（成本）|
+
+### rerank 明确修复的 5 条（基线没命中）
+| ID | 基线 | rerank | 说明 |
+|----|:---:|:---:|------|
+| C1 | 0% | 67% | 高效微调多论文，补上 GPTQ+LoRA |
+| C2 | 50% | 100% | 多智能体协作，补上 AutoGen |
+| D1 | 50% | 100% | RAPTOR vs GraphRAG，双锚定 |
+| D3 | 50% | 100% | DPO vs RLHF，补上关键论文 |
+| E3 | 50% | 100% | embedding 向量化 |
+
+### 引用纯净度提升（"引用召回不精准"修复的直接证据）
+- E1：混入 FlashAttention → 纯 Generative_Agents + Attention
+- D1：混 RAG_Survey → 纯 GraphRAG
+- D4：混 RAG_Lewis/GraphRAG → 纯 Self_RAG
+
+### rerank 的代价：B4 反而退化（67%→33%）
+- B4（中文口语跨篇）：rerank 全选 MT_Bench（评估类），跑偏
+- 根因：口语化多主题 query，reranker 把"评估/判断"字面语义误判高相关
+- **结论**：rerank 擅长精确术语/单主题（A,C,D类受益）；口语跨篇（B类）用纯向量更好
+
+### 应对：加 --no-rerank 逃生舱
+- `python3 query.py "..." --no-rerank`：关闭 rerank，回归纯向量
+- 验证：B4 用 --no-rerank 恢复完整回答（召回 RAPTOR+RAG Survey+Self RAG）
+- 默认策略：rerank on（flat/detect 默认），口语跨篇 query 手动关
+
+### 综合建议
+rerank 是"引用精准度 vs 耗时 + 口语跨篇兼容性"的权衡。推荐：
+- 精确/单主题：rerank on（收益大）
+- 口语/跨篇/快速闲聊：--no-rerank 或 --retrieval-check
+- 未来可做按 query 类型自动路由（类似 Self-RAG on-demand 决策）
