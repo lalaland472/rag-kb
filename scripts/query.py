@@ -2,9 +2,15 @@
 """Week 23 Day 3 — query.py：rag-kb 问答 CLI（交互式）
 
 把 generate_answer 封装成正式问答界面：
-  - 单次查询：python3 scripts/query.py "问题" [--mode flat|hybrid] [--k 5]
+  - 单次查询：python3 scripts/query.py "问题" [--mode flat|hybrid] [--k 5] [--style strict|chat|default]
   - 交互会话：python3 scripts/query.py [--interactive]
   - 输出：回答 + 引用来源（论文名 · 第N页）
+
+⚠️ Self-RAG 启发（W23 Day 6）：
+  --style strict    → IsSup 拉满，每句可核验事实都要有依据，末尾附忠实性核对
+  --style chat      → IsUse 拉高，允许适度发散
+  --retrieval-check → Retrieve on-demand 预判：纯常识/闲聊 query 直接 LLM-only 跳过检索
+  --llm-only        → 强制不检索（验证对比用）
 
 退出交互会话：输入 q / quit / exit / 退出。
 """
@@ -42,31 +48,38 @@ def format_answer(res):
     lines.append("📝 回答")
     lines.append("─" * 56)
     lines.append(answer)
+    if cites:
+        lines.append("")
+        lines.append("📚 引用来源")
+        for c in cites:
+            if c["chunk_id"] is not None:
+                loc = f"第{c['page'] + 1}页" if c.get("page") is not None else f"块{c['chunk_id']}"
+            else:
+                loc = "(摘要)"
+            lines.append(f"  [{c['index']}] {c['display']}  [{loc}]")
     lines.append("")
-    lines.append("📚 引用来源")
-    for c in cites:
-        if c["chunk_id"] is not None:
-            loc = f"第{c['page'] + 1}页" if c.get("page") is not None else f"块{c['chunk_id']}"
-        else:
-            loc = "(摘要)"
-        lines.append(f"  [{c['index']}] {c['display']}  [{loc}]")
-    lines.append("")
-    lines.append(f"  ⏱ {meta.get('latency', 0):.1f}s · mode={meta['mode']} · "
+    extra = f" · style={meta.get('style')}" if meta.get("style") else ""
+    if not meta.get("retrieval_needed", True):
+        extra += " · ⚡跳过检索(LLM-only)"
+    if meta.get("fidelity_checked"):
+        extra += " · ⚠️已忠实核对"
+    lines.append(f"  ⏱ {meta.get('latency', 0):.1f}s · mode={meta['mode']}{extra} · "
                  f"chunk={meta['chunk_count']}")
     return "\n".join(lines)
 
 
-def ask_once(question, mode, k, interactive=False):
+def ask_once(question, mode, k, interactive=False, style="default", retrieval_check=False, llm_only=False):
     """单次问答，带耗时统计。"""
     t0 = time.time()
-    res = generate_answer(question, mode=mode, k=k)
+    res = generate_answer(question, mode=mode, k=k, style=style,
+                          retrieval_check=retrieval_check, llm_only=llm_only)
     res["meta"]["latency"] = time.time() - t0
     if interactive:
         print(format_answer(res))
     return res
 
 
-def interactive_loop(default_mode, default_k):
+def interactive_loop(default_mode, default_k, style="default", retrieval_check=False, llm_only=False):
     """交互式问答会话。"""
     mode, k = default_mode, default_k
     print(BANNER)
@@ -106,16 +119,30 @@ def interactive_loop(default_mode, default_k):
             else:
                 print("用法: /k <1-20>")
             continue
+        if q.startswith("/style") :
+            parts = q.split()
+            if len(parts) == 2 and parts[1] in ("strict", "chat", "default"):
+                style = parts[1]
+                print(f"✅ 生成风格切换到: {style}")
+            else:
+                print("用法: /style strict|chat|default")
+            continue
+        if q.startswith("/rc"):
+            retrieval_check = not retrieval_check
+            print(f"✅ 按需检索预判(Retrieve on-demand): {'开' if retrieval_check else '关'}")
+            continue
         try:
-            ask_once(q, mode, k, interactive=True)
+            ask_once(q, mode, k, interactive=True, style=style,
+                     retrieval_check=retrieval_check, llm_only=llm_only)
         except Exception as e:
             print(f"⚠️ 出错: {e}")
 
 
 def main():
     args = sys.argv[1:]
-    # 支持 --mode / --k / --interactive
+    # 支持 --mode / --k / --style / --retrieval-check / --llm-only / --interactive
     mode, k = "flat", 5
+    style, retrieval_check, llm_only = "default", False, False
     interactive = False
     positionals = []
 
@@ -128,6 +155,15 @@ def main():
         elif a == "--k" and i + 1 < len(args):
             k = int(args[i + 1])
             i += 2
+        elif a == "--style" and i + 1 < len(args):
+            style = args[i + 1]
+            i += 2
+        elif a == "--retrieval-check":
+            retrieval_check = True
+            i += 1
+        elif a == "--llm-only":
+            llm_only = True
+            i += 1
         elif a in ("--interactive", "-i"):
             interactive = True
             i += 1
@@ -137,12 +173,13 @@ def main():
 
     if interactive or not positionals:
         # 交互模式（无位置参数默认交互）
-        interactive_loop(mode, k)
+        interactive_loop(mode, k, style=style, retrieval_check=retrieval_check, llm_only=llm_only)
         return
 
     question = " ".join(positionals)
-    print(f"🔍 查询: {question} (mode={mode}, k={k})")
-    res = ask_once(question, mode, k)
+    print(f"🔍 查询: {question} (mode={mode}, k={k}, style={style}, rc={retrieval_check}, lo={llm_only})")
+    res = ask_once(question, mode, k, style=style,
+                   retrieval_check=retrieval_check, llm_only=llm_only)
     print(format_answer(res))
 
 
