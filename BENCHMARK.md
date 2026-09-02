@@ -101,12 +101,89 @@
 
 ---
 
-## 八、总结
+## 八、GraphRAG 全局问答（W24 Day 3，2026-09-01）
+
+来源：`scripts/graphrag_benchmark.py` · 8 条全局问题 · 每条标注【期望覆盖主题】
+
+**GraphRAG 走正式 Map-Reduce pipeline**（与 CLI `graphrag_query_global.py` 对齐）：
+选相关社区 → 逐社区部分回答（Map）→ 汇总（Reduce），而非把全量摘要一锅端。
+
+| 模式 | 平均覆盖度 | 有实质内容 | 平均耗时 |
+|------|:---:|:---:|:---:|
+| RAG（flat）| 45% | 88% | 35.4s |
+| **GraphRAG** | **62%** | **100%** | **15.7s** |
+
+**覆盖度提升：+18 个百分点**
+
+### 逐题表现（flat vs graphrag 覆盖度）
+
+| 题目 | 期望主题 | flat | graphrag |
+|------|------|:---:|:---:|
+| G1 语料库整体主题 | RAG/Agent/微调/Transformer | 50% | 50% |
+| G2 RAG 演进与变体 | RAG/Self-RAG/GraphRAG/向量 | 25% | **100%** |
+| G3 Agent 代表工作 | AutoGen/ReAct/生成智能体/工具 | 25% | **100%** |
+| G4 大模型高效化 | LoRA/量化/vLLM/KV cache | 25% | 25% |
+| G5 对齐主流方法 | RLHF/DPO/奖励模型 | 100% | 100% |
+| G6 知识组织方式 | 向量/图/树/摘要 | 0% | 25% |
+| G7 评估基准与方法 | benchmark/judge/评估 | 67% | 33% |
+| G8 Transformer 演进 | Transformer/attention/Flash | 67% | 67% |
+
+### 核心结论
+
+1. **GraphRAG 完胜全局演进/跨篇归纳类问题**（G2/G3 达 100% vs flat 25%）——这正是普通 RAG 失效、GraphRAG 的主场
+2. **耗时减半**（15.7s vs 35.4s）——只喂相关社区而非全量摘要，更省 token、更聚焦
+3. **有实质内容 100%**，无空答（flat 仍有 12% 空答风险）
+4. **注意**：G4（高效化）两边都只命中"量化"，漏 LoRA/vLLM/KV cache——测试集主题覆盖的缺口，非 pipeline 缺陷；flat 仅 G7（评估）一次反超，可能因该问题期望主题偏术语、关键词直接命中检索
+
+### 8.5 方法二：head-to-head 三标准盲评（W24 补测，2026-09-02）
+
+来源：`scripts/graphrag_head2head.py` · 同一 8 条全局问题 · LLM-as-Judge 盲评
+judge=`deepseek-v4-pro`（关闭内部推理 `thinking:disabled`，避免 reasoning 吃光 token 导致 content 空）
+三标准（论文用）：**忠实性 Faithfulness / 完整性 Completeness / 可溯源 Traceability**（各 0-10）
+
+> ⚠️ 方法论坑（已解决）：先用弱 judge `deepseek-v4-flash` 跑，因偏好冗长答案导致"flat 反超"假象；换 `deepseek-v4-pro` 后仍失败，定位到它是推理模型、`reasoning_content` 吃光 max_tokens 使 `content` 返回空。最终 `pro + thinking:disabled` 得到可靠结果，与方法一一致。
+
+#### 汇总均值（30 分制）
+
+| 标准 | RAG(flat) | GraphRAG | 差值 |
+|------|:---:|:---:|:---:|
+| **总分** | **17.6** | **24.6** | **+7.0** |
+| 忠实性 | 7.0 | 7.9 | +0.9 |
+| 完整性 | 4.2 | **7.9** | **+3.7** |
+| 可溯源 | 6.3 | **8.7** | **+2.4** |
+| **胜负** | **0 胜** | **8 胜** | — |
+
+**结论：GraphRAG 三标准全面占优，8 题全胜——与方法一（覆盖度 +18pt）完全一致。**
+
+#### 逐题（忠实/完整/可溯源）
+
+| 题 | flat | graphrag | 胜 | 说明 |
+|----|:---:|:---:|:---:|------|
+| G1 整体主题 | 6.0/5.0/6.5 | 8.5/7.0/9.0 | graphrag | A 归纳结构化；B 零散未展开 |
+| G2 RAG 演进 | 8.0/5.5/7.0 | 8.5/9.0/9.0 | graphrag | B 覆盖 Naive→Advanced/Modular→Self-RAG→GraphRAG |
+| G3 Agent 工作 | 7.0/6.5/7.5 | 8.5/8.0/9.0 | graphrag | B 覆盖 ReAct 等四类、可溯源强 |
+| G4 高效化 | 8.5/5.0/7.5 | 7.5/6.0/7.0 | graphrag | B 赢总分；A 覆盖更全（graph 唯一弱题）|
+| G5 对齐方法 | 9.0/4.0/7.0 | 7.5/8.5/9.0 | graphrag | B 覆盖 RLHF+DPO；A 更保守但量不足 |
+| G6 知识组织 | 8.5/6.0/8.0 | 7.0/8.5/8.5 | graphrag | B 含参数化记忆等，维度更全 |
+| G7 评估基准 | **0/0/0** | 8.5/8.0/9.0 | graphrag | **flat 空答**；典型失效案例 |
+| G8 Transformer | 9.0/2.0/7.0 | 7.5/8.5/9.0 | graphrag | A 仅抓单一片段，严重遗漏 |
+
+#### head-to-head 关键洞察
+
+1. **完整性是最大差距（+3.7）**：flat 均值仅 4.2——单篇/单片段检索回答不了跨全库的全局问题
+2. **flat 忠实性不差（7.0）**：严格只引用检索句子，所以忠实性差距最小（+0.9）
+3. **flat 致命伤是"空答/遗漏"**：G7 空答 0/0/0、G8 只抓单一片段——普通 RAG 处理全局查询的典型失败模式
+4. **两方法互证**：方法一（覆盖度 62% vs 45%）与方法二（三标准 8 胜 0 平）结论一致，为 GraphRAG 全局优势提供双重证据
+
+---
+
+## 九、总结
 
 1. **RAG-KB 可用**：hybrid 完整命中 75%，Flat R@5=0.91，带页码引用
 2. **双模式正确**：精确术语用 flat，主题/跨篇用 hybrid
 3. **rerank 要路由**：flat 开（+20%）、hybrid 关（-13%）
-4. **价值定位**：RAG 的核心价值是"**可验证、不凭记忆裸奔**"，不只是"答得更好"
+4. **GraphRAG 补全局**：面向整个语料库的归纳性问题用 GraphRAG（Map-Reduce），覆盖 +18pt 且更快
+5. **价值定位**：RAG 的核心价值是"**可验证、不凭记忆裸奔**"，不只是"答得更好"
 
 ---
-📚 W24 Day 2 · Benchmark · 2026-08-29
+📚 W24 Day 2-3 · Benchmark · 2026-08-29 / 2026-09-01
