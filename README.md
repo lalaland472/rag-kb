@@ -83,6 +83,33 @@ python3 scripts/query.py "一年有几个季节" --retrieval-check
 python3 scripts/query.py --interactive
 ```
 
+## 🕸️ GraphRAG 演示（W24 Day 3）
+
+面向**整个语料库**的全局问答演示——普通 RAG 检索"片段"，GraphRAG 归纳"森林"。
+配套可视化图谱：`data/graph/graph.html` 浏览器打开可交互浏览实体图谱与社区。
+
+```bash
+python3 scripts/graphrag_demo.py            # 完整四幕
+python3 scripts/graphrag_demo.py --quick    # 只跑全局问答对比（省时）
+```
+
+演示四幕：
+- **Act 0 图谱概览**：实体节点/关系边/社区/论文规模
+- **Act 1 社区地图**：语料库自动拆出的技术主题社区
+- **Act 2 全局问答对比**：GraphRAG vs RAG(flat) 同屏对比
+- **Act 3 Map-Reduce 透明**：选社区 → 逐社区答 → 汇总，全程可见
+
+实际效果（2026-09-01 实测，模型 deepseek-v4-flash）：
+
+| 全局问题 | RAG(flat) | GraphRAG |
+|------|:---:|:---:|
+| Q1 语料库整体主题 | ❌ 空答（62s）| ✅ 完整架构脉络（17s）|
+| Q2 RAG 演进与变体 | ✅ 三阶段 | ✅ 演进+自反思+图增强 |
+| Q3 大模型对齐方法 | ✅ RLHF+DPO | ✅ 更结构化（含两者关系）|
+| Q4 组织知识方式 | ⚠️ 无法完整回答 | ✅ 多层覆盖（架构/优化/外部知识/评估）|
+
+**亮点**：Q1 上 flat 直接空答，GraphRAG 给出结构化全局答案——全局归纳性问题正是普通 RAG 失效、GraphRAG 的主场。
+
 ## 📁 文件说明
 
 | 文件 | 用途 |
@@ -95,6 +122,8 @@ python3 scripts/query.py --interactive
 | `scripts/citation_pipeline.py` | 来源引用链（chunk → 文件 → 页面）|
 | `scripts/generate_answer.py` | 生成模块（strict/chat + Retrieve-on-demand + 忠实核对）|
 | `scripts/query.py` | 交互式问答 CLI |
+| `scripts/demo.py` | RAG-KB 演示（flat/hybrid 五场景）|
+| `scripts/graphrag_demo.py` | **GraphRAG 专项演示**（图谱概览 + 社区地图 + 全局问答对比 + Map-Reduce 透明）|
 | `scripts/evaluate_recall.py` | W21 Recall@5 验证 |
 | `scripts/compare_modes.py` | W23 三组对比（LLM-only vs RAG vs RAPTOR）|
 | `scripts/test_queries.py` | 20 条 query 端到端回归测试 |

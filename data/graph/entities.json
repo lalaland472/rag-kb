@@ -1,0 +1,1577 @@
+{
+  "model": "deepseek-v4-flash",
+  "documents": {
+    "BERT_2018": [
+      [
+        "BERT",
+        "is_a",
+        "language representation model"
+      ],
+      [
+        "BERT",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "BERT",
+        "uses",
+        "masked language model"
+      ],
+      [
+        "BERT",
+        "uses",
+        "next sentence prediction"
+      ],
+      [
+        "BERT",
+        "improves_on",
+        "OpenAI GPT"
+      ],
+      [
+        "BERT",
+        "improves_on",
+        "ELMo"
+      ],
+      [
+        "masked language model",
+        "enables",
+        "bidirectional representations"
+      ],
+      [
+        "fine-tuning",
+        "is_used_in",
+        "BERT"
+      ],
+      [
+        "BERT",
+        "achieves",
+        "state-of-the-art results"
+      ],
+      [
+        "BERT",
+        "evaluated_on",
+        "GLUE"
+      ],
+      [
+        "BERT",
+        "evaluated_on",
+        "SQuAD"
+      ],
+      [
+        "BERT",
+        "outperforms",
+        "task-specific architectures"
+      ],
+      [
+        "Transformer",
+        "uses",
+        "self-attention"
+      ],
+      [
+        "ELMo",
+        "is_a",
+        "feature-based approach"
+      ],
+      [
+        "OpenAI GPT",
+        "is_a",
+        "fine-tuning approach"
+      ]
+    ],
+    "Attention_Is_All_You_Need_2017": [
+      [
+        "Attention Is All You Need",
+        "proposes",
+        "Transformer"
+      ],
+      [
+        "Transformer",
+        "based_on",
+        "attention"
+      ],
+      [
+        "Transformer",
+        "replaces",
+        "recurrent neural networks"
+      ],
+      [
+        "Transformer",
+        "removes",
+        "convolution"
+      ],
+      [
+        "Transformer",
+        "uses",
+        "multi-head attention"
+      ],
+      [
+        "multi-head attention",
+        "uses",
+        "scaled dot-product attention"
+      ],
+      [
+        "self-attention",
+        "is_a",
+        "attention"
+      ],
+      [
+        "Transformer",
+        "improves_on",
+        "RNN"
+      ],
+      [
+        "Transformer",
+        "achieves",
+        "BLEU score"
+      ],
+      [
+        "Transformer",
+        "evaluated_on",
+        "WMT 2014"
+      ],
+      [
+        "Transformer",
+        "applied_to",
+        "English constituency parsing"
+      ],
+      [
+        "position encoding",
+        "used_in",
+        "Transformer"
+      ],
+      [
+        "encoder-decoder",
+        "is_a",
+        "architecture"
+      ],
+      [
+        "attention",
+        "connects",
+        "encoder and decoder"
+      ],
+      [
+        "Transformer",
+        "trains_on",
+        "GPUs"
+      ]
+    ],
+    "AutoGen_2023": [
+      [
+        "AutoGen",
+        "is_a",
+        "multi-agent conversation framework"
+      ],
+      [
+        "AutoGen",
+        "enables",
+        "LLM applications"
+      ],
+      [
+        "AutoGen",
+        "supports",
+        "multiple agents"
+      ],
+      [
+        "AutoGen",
+        "uses",
+        "LLMs"
+      ],
+      [
+        "AutoGen",
+        "uses",
+        "human inputs"
+      ],
+      [
+        "AutoGen",
+        "uses",
+        "tools"
+      ],
+      [
+        "multi-agent conversation",
+        "based_on",
+        "conversable agents"
+      ],
+      [
+        "conversable agent",
+        "can_be",
+        "customized"
+      ],
+      [
+        "conversable agent",
+        "can_use",
+        "LLMs"
+      ],
+      [
+        "conversable agent",
+        "can_use",
+        "tools"
+      ],
+      [
+        "conversable agent",
+        "can_use",
+        "human inputs"
+      ],
+      [
+        "flexible conversation patterns",
+        "supported_by",
+        "AutoGen"
+      ],
+      [
+        "AutoGen",
+        "includes",
+        "hierarchical chat"
+      ],
+      [
+        "AutoGen",
+        "includes",
+        "joint chat"
+      ],
+      [
+        "AutoGen",
+        "based_on",
+        "multi-agent conversations"
+      ]
+    ],
+    "AWQ_2023": [
+      [
+        "MathChat",
+        "is_a",
+        "conversational problem-solving framework"
+      ],
+      [
+        "MathChat",
+        "consists_of",
+        "LLM agent"
+      ],
+      [
+        "MathChat",
+        "consists_of",
+        "user proxy agent"
+      ],
+      [
+        "user proxy agent",
+        "responsible_for",
+        "tool execution"
+      ],
+      [
+        "MathChat",
+        "uses",
+        "Python"
+      ],
+      [
+        "MathChat",
+        "uses",
+        "GPT-4"
+      ],
+      [
+        "MathChat",
+        "evaluated_on",
+        "MATH dataset"
+      ],
+      [
+        "MathChat",
+        "improves_on",
+        "Program of Thoughts"
+      ],
+      [
+        "MathChat",
+        "improves_on",
+        "Program Synthesis"
+      ],
+      [
+        "Program of Thoughts",
+        "uses",
+        "Python"
+      ],
+      [
+        "Program Synthesis",
+        "uses",
+        "Python"
+      ],
+      [
+        "MathChat",
+        "based_on",
+        "multi-agent collaboration"
+      ],
+      [
+        "MathChat",
+        "incorporates",
+        "code execution"
+      ],
+      [
+        "LLM agent",
+        "participates_in",
+        "multi-agent collaboration"
+      ],
+      [
+        "user proxy agent",
+        "participates_in",
+        "multi-agent collaboration"
+      ]
+    ],
+    "FlashAttention_2022": [
+      [
+        "FlashAttention",
+        "is_a",
+        "IO-aware exact attention algorithm"
+      ],
+      [
+        "FlashAttention",
+        "uses",
+        "tiling"
+      ],
+      [
+        "FlashAttention",
+        "reduces",
+        "memory reads/writes"
+      ],
+      [
+        "FlashAttention",
+        "improves_on",
+        "standard attention"
+      ],
+      [
+        "FlashAttention",
+        "based_on",
+        "self-attention"
+      ],
+      [
+        "tiling",
+        "reduces",
+        "HBM accesses"
+      ],
+      [
+        "IO-aware",
+        "accounts_for",
+        "GPU memory hierarchy"
+      ],
+      [
+        "GPU HBM",
+        "is_slower_than",
+        "GPU SRAM"
+      ],
+      [
+        "FlashAttention",
+        "extends_to",
+        "block-sparse attention"
+      ],
+      [
+        "block-sparse attention",
+        "is_an",
+        "approximate attention method"
+      ],
+      [
+        "FlashAttention",
+        "speeds_up",
+        "Transformer"
+      ],
+      [
+        "self-attention",
+        "has",
+        "quadratic complexity"
+      ],
+      [
+        "FlashAttention",
+        "enables",
+        "longer context"
+      ],
+      [
+        "FlashAttention",
+        "achieves",
+        "state-of-the-art results"
+      ],
+      [
+        "block-sparse FlashAttention",
+        "improves_on",
+        "existing approximate attention"
+      ]
+    ],
+    "FAISS_2019": [
+      [
+        "FAISS_2019",
+        "proposes",
+        "GPU k-selection algorithm"
+      ],
+      [
+        "FAISS_2019",
+        "uses",
+        "product quantization"
+      ],
+      [
+        "FAISS_2019",
+        "improves_on",
+        "prior GPU state of the art"
+      ],
+      [
+        "GPU k-selection",
+        "enables",
+        "nearest neighbor implementation"
+      ],
+      [
+        "similarity search",
+        "uses",
+        "high-dimensional features"
+      ],
+      [
+        "product quantization",
+        "is_a",
+        "vector compression method"
+      ],
+      [
+        "IVFADC",
+        "based_on",
+        "product quantization"
+      ],
+      [
+        "OPQ",
+        "improves_on",
+        "product quantization"
+      ],
+      [
+        "k-NN graph",
+        "computed_by",
+        "FAISS_2019"
+      ],
+      [
+        "FAISS_2019",
+        "based_on",
+        "GPUs"
+      ],
+      [
+        "k-selection",
+        "operates_in",
+        "register memory"
+      ]
+    ],
+    "DPO_2023": [
+      [
+        "DPO",
+        "is_a",
+        "preference optimization method"
+      ],
+      [
+        "DPO",
+        "optimizes",
+        "human preferences"
+      ],
+      [
+        "DPO",
+        "eliminates",
+        "RLHF"
+      ],
+      [
+        "DPO",
+        "uses",
+        "Bradley-Terry model"
+      ],
+      [
+        "DPO",
+        "is_based_on",
+        "implicit reward model"
+      ],
+      [
+        "DPO",
+        "optimizes",
+        "language model policy"
+      ],
+      [
+        "RLHF",
+        "fits",
+        "reward model"
+      ],
+      [
+        "RLHF",
+        "uses",
+        "reinforcement learning"
+      ],
+      [
+        "RLHF",
+        "is_a",
+        "fine-tuning pipeline"
+      ],
+      [
+        "reward model",
+        "reflects",
+        "human preferences"
+      ],
+      [
+        "language model",
+        "aligned_with",
+        "human preferences"
+      ],
+      [
+        "Bradley-Terry model",
+        "measures",
+        "reward function"
+      ],
+      [
+        "KL-divergence",
+        "constrains",
+        "policy optimization"
+      ],
+      [
+        "DPO",
+        "uses",
+        "classification loss"
+      ],
+      [
+        "DPO",
+        "improves_on",
+        "PPO-based RLHF"
+      ]
+    ],
+    "GPT3_2020": [
+      [
+        "GPT-3",
+        "is_a",
+        "autoregressive language model"
+      ],
+      [
+        "GPT-3",
+        "has_parameter_size",
+        "175 billion"
+      ],
+      [
+        "GPT-3",
+        "uses",
+        "few-shot learning"
+      ],
+      [
+        "few-shot learning",
+        "avoids",
+        "fine-tuning"
+      ],
+      [
+        "GPT-3",
+        "improves_on",
+        "previous language models"
+      ],
+      [
+        "GPT-3",
+        "trained_on",
+        "large web corpora"
+      ],
+      [
+        "GPT-3",
+        "performs",
+        "translation"
+      ],
+      [
+        "GPT-3",
+        "performs",
+        "question-answering"
+      ],
+      [
+        "GPT-3",
+        "performs",
+        "cloze tasks"
+      ],
+      [
+        "GPT-3",
+        "performs",
+        "arithmetic"
+      ],
+      [
+        "GPT-3",
+        "generates",
+        "news articles"
+      ],
+      [
+        "fine-tuning",
+        "requires",
+        "task-specific datasets"
+      ],
+      [
+        "pre-trained language models",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "GPT-3",
+        "struggles_with",
+        "common sense reasoning"
+      ],
+      [
+        "GPT-3",
+        "evaluated_on",
+        "SuperGLUE"
+      ]
+    ],
+    "GPTQ_2023": [
+      [
+        "GPTQ_2023",
+        "proposes",
+        "GPTQ"
+      ],
+      [
+        "GPTQ",
+        "is_a",
+        "post-training quantization"
+      ],
+      [
+        "GPTQ",
+        "quantizes",
+        "GPT models"
+      ],
+      [
+        "GPTQ",
+        "uses",
+        "approximate second-order information"
+      ],
+      [
+        "GPTQ",
+        "reduces",
+        "bitwidth"
+      ],
+      [
+        "GPTQ",
+        "improves_on",
+        "round-to-nearest quantization"
+      ],
+      [
+        "GPTQ",
+        "compresses",
+        "OPT"
+      ],
+      [
+        "GPTQ",
+        "compresses",
+        "BLOOM"
+      ],
+      [
+        "GPTQ",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "Transformer",
+        "is_a",
+        "neural network architecture"
+      ],
+      [
+        "GPT",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "OPT",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "BLOOM",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "GPT-175B",
+        "uses",
+        "FP16"
+      ],
+      [
+        "GPTQ",
+        "enables",
+        "single-GPU inference"
+      ],
+      [
+        "GPTQ",
+        "achieves",
+        "inference speedup"
+      ]
+    ],
+    "GraphRAG_2024": [
+      [
+        "GraphRAG",
+        "is_a",
+        "graph-based RAG"
+      ],
+      [
+        "GraphRAG",
+        "improves_on",
+        "vector RAG"
+      ],
+      [
+        "GraphRAG",
+        "uses",
+        "knowledge graph"
+      ],
+      [
+        "GraphRAG",
+        "uses",
+        "community summaries"
+      ],
+      [
+        "GraphRAG",
+        "addresses",
+        "query-focused summarization"
+      ],
+      [
+        "GraphRAG",
+        "uses",
+        "LLM"
+      ],
+      [
+        "GraphRAG",
+        "available_in",
+        "LangChain"
+      ],
+      [
+        "vector RAG",
+        "is_a",
+        "RAG"
+      ],
+      [
+        "RAG",
+        "fails_on",
+        "global sensemaking queries"
+      ],
+      [
+        "knowledge graph",
+        "contains",
+        "entities"
+      ],
+      [
+        "community summaries",
+        "generated_from",
+        "hierarchical communities"
+      ],
+      [
+        "map-reduce",
+        "used_by",
+        "GraphRAG"
+      ],
+      [
+        "LLM-as-a-judge",
+        "evaluates",
+        "GraphRAG"
+      ],
+      [
+        "LLM-as-a-judge",
+        "evaluates",
+        "vector RAG"
+      ],
+      [
+        "GraphRAG",
+        "based_on",
+        "entity knowledge graph"
+      ]
+    ],
+    "Generative_Agents_2023": [
+      [
+        "Generative Agents",
+        "is_a",
+        "interactive simulacra of human behavior"
+      ],
+      [
+        "Generative Agents",
+        "uses",
+        "large language model"
+      ],
+      [
+        "Generative Agents",
+        "stores",
+        "memories"
+      ],
+      [
+        "Generative Agents",
+        "performs",
+        "reflection"
+      ],
+      [
+        "Generative Agents",
+        "performs",
+        "planning"
+      ],
+      [
+        "reflection",
+        "synthesizes",
+        "memories"
+      ],
+      [
+        "planning",
+        "retrieves",
+        "memories"
+      ],
+      [
+        "retrieval",
+        "uses",
+        "natural language"
+      ],
+      [
+        "Generative Agents",
+        "populates",
+        "sandbox environment"
+      ],
+      [
+        "sandbox environment",
+        "inspired_by",
+        "The Sims"
+      ],
+      [
+        "Generative Agents",
+        "simulates",
+        "human behavior"
+      ],
+      [
+        "large language model",
+        "extends",
+        "observation"
+      ],
+      [
+        "large language model",
+        "enables",
+        "generative agents"
+      ],
+      [
+        "memory",
+        "stores",
+        "experiences"
+      ],
+      [
+        "reflection",
+        "improves_on",
+        "memory"
+      ]
+    ],
+    "HyDE_2022": [
+      [
+        "HyDE",
+        "is_a",
+        "zero-shot dense retrieval"
+      ],
+      [
+        "HyDE",
+        "uses",
+        "InstructGPT"
+      ],
+      [
+        "HyDE",
+        "uses",
+        "Contriever"
+      ],
+      [
+        "HyDE",
+        "generates",
+        "hypothetical document"
+      ],
+      [
+        "hypothetical document",
+        "encoded_by",
+        "Contriever"
+      ],
+      [
+        "HyDE",
+        "improves_on",
+        "Contriever"
+      ],
+      [
+        "Contriever",
+        "is_a",
+        "unsupervised contrastive encoder"
+      ],
+      [
+        "InstructGPT",
+        "is_a",
+        "instruction-following language model"
+      ],
+      [
+        "HyDE",
+        "based_on",
+        "GPT-3"
+      ],
+      [
+        "dense retrieval",
+        "uses",
+        "semantic embedding similarities"
+      ],
+      [
+        "HyDE",
+        "outperforms",
+        "fine-tuned retrievers"
+      ],
+      [
+        "HyDE",
+        "generalizes_across",
+        "tasks"
+      ],
+      [
+        "HyDE",
+        "generalizes_across",
+        "languages"
+      ],
+      [
+        "zero-shot dense retrieval",
+        "requires",
+        "no relevance labels"
+      ],
+      [
+        "document-document similarity",
+        "learned_by",
+        "contrastive encoder"
+      ]
+    ],
+    "InstructGPT_2022": [
+      [
+        "InstructGPT",
+        "is_a",
+        "fine-tuned language model"
+      ],
+      [
+        "InstructGPT",
+        "based_on",
+        "GPT-3"
+      ],
+      [
+        "InstructGPT",
+        "trained_with",
+        "RLHF"
+      ],
+      [
+        "InstructGPT",
+        "uses",
+        "PPO"
+      ],
+      [
+        "InstructGPT",
+        "improves_on",
+        "GPT-3"
+      ],
+      [
+        "RLHF",
+        "uses",
+        "human feedback"
+      ],
+      [
+        "RLHF",
+        "trains",
+        "reward model"
+      ],
+      [
+        "reward model",
+        "predicts",
+        "human preferences"
+      ],
+      [
+        "GPT-3",
+        "fine-tuned_with",
+        "supervised learning"
+      ],
+      [
+        "supervised learning",
+        "uses",
+        "human demonstrations"
+      ],
+      [
+        "PPO",
+        "optimizes",
+        "reward model"
+      ],
+      [
+        "fine-tuning",
+        "aligns",
+        "language models"
+      ],
+      [
+        "alignment",
+        "focuses_on",
+        "helpfulness"
+      ],
+      [
+        "alignment",
+        "focuses_on",
+        "honesty"
+      ],
+      [
+        "alignment",
+        "focuses_on",
+        "harmlessness"
+      ]
+    ],
+    "LoRA_2021": [
+      [
+        "LoRA_2021",
+        "proposes",
+        "LoRA"
+      ],
+      [
+        "LoRA",
+        "is_a",
+        "low-rank adaptation"
+      ],
+      [
+        "LoRA",
+        "freezes",
+        "pre-trained model weights"
+      ],
+      [
+        "LoRA",
+        "injects",
+        "rank decomposition matrices"
+      ],
+      [
+        "LoRA",
+        "reduces",
+        "trainable parameters"
+      ],
+      [
+        "LoRA",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "LoRA",
+        "improves_on",
+        "fine-tuning"
+      ],
+      [
+        "LoRA",
+        "uses",
+        "Adam"
+      ],
+      [
+        "fine-tuning",
+        "retrains",
+        "all model parameters"
+      ],
+      [
+        "adapters",
+        "introduce",
+        "inference latency"
+      ]
+    ],
+    "Lost_in_the_Middle_2023": [
+      [
+        "Lost_in_the_Middle_2023",
+        "analyzes",
+        "multi-document question answering"
+      ],
+      [
+        "Lost_in_the_Middle_2023",
+        "analyzes",
+        "key-value retrieval"
+      ],
+      [
+        "Lost_in_the_Middle_2023",
+        "evaluates",
+        "long-context language models"
+      ],
+      [
+        "multi-document question answering",
+        "is_a",
+        "task"
+      ]
+    ],
+    "MT_Bench_2023": [
+      [
+        "MT_Bench_2023",
+        "proposes",
+        "LLM-as-a-judge"
+      ],
+      [
+        "LLM-as-a-judge",
+        "evaluates",
+        "chat assistants"
+      ],
+      [
+        "LLM-as-a-judge",
+        "uses",
+        "GPT-4"
+      ],
+      [
+        "LLM-as-a-judge",
+        "suffers_from",
+        "position bias"
+      ],
+      [
+        "LLM-as-a-judge",
+        "suffers_from",
+        "verbosity bias"
+      ],
+      [
+        "LLM-as-a-judge",
+        "suffers_from",
+        "self-enhancement bias"
+      ],
+      [
+        "MT-Bench",
+        "is_a",
+        "benchmark"
+      ],
+      [
+        "Chatbot Arena",
+        "is_a",
+        "crowdsourced battle platform"
+      ],
+      [
+        "MT-Bench",
+        "complements",
+        "traditional benchmarks"
+      ],
+      [
+        "LLaMA",
+        "evaluated_by",
+        "MT-Bench"
+      ],
+      [
+        "Vicuna",
+        "evaluated_by",
+        "MT-Bench"
+      ],
+      [
+        "RLHF",
+        "aligns",
+        "chat assistants"
+      ],
+      [
+        "MMLU",
+        "is_a",
+        "traditional benchmark"
+      ],
+      [
+        "HELM",
+        "is_a",
+        "traditional benchmark"
+      ],
+      [
+        "GPT-4",
+        "matches",
+        "human preferences"
+      ]
+    ],
+    "RAG_Lewis_2020": [
+      [
+        "RAG_Lewis_2020",
+        "proposes",
+        "RAG"
+      ],
+      [
+        "RAG",
+        "is_a",
+        "retrieval-augmented generation"
+      ],
+      [
+        "RAG",
+        "combines",
+        "parametric memory"
+      ],
+      [
+        "RAG",
+        "combines",
+        "non-parametric memory"
+      ]
+    ],
+    "RAG_Survey_2024": [
+      [
+        "RAG_Survey_2024",
+        "surveys",
+        "RAG"
+      ],
+      [
+        "RAG",
+        "is_a",
+        "retrieval-augmented generation"
+      ],
+      [
+        "RAG",
+        "uses",
+        "external knowledge base"
+      ],
+      [
+        "RAG",
+        "reduces",
+        "hallucination"
+      ],
+      [
+        "RAG",
+        "enhances",
+        "LLM"
+      ],
+      [
+        "LLM",
+        "has_challenge",
+        "hallucination"
+      ],
+      [
+        "Naive RAG",
+        "is_a",
+        "RAG paradigm"
+      ],
+      [
+        "Advanced RAG",
+        "is_a",
+        "RAG paradigm"
+      ],
+      [
+        "Modular RAG",
+        "is_a",
+        "RAG paradigm"
+      ],
+      [
+        "RAG",
+        "includes",
+        "retrieval"
+      ],
+      [
+        "RAG",
+        "includes",
+        "generation"
+      ],
+      [
+        "RAG",
+        "includes",
+        "augmentation"
+      ],
+      [
+        "retrieval",
+        "uses",
+        "semantic similarity"
+      ],
+      [
+        "LLM",
+        "uses",
+        "in-context learning"
+      ],
+      [
+        "RAG",
+        "based_on",
+        "Transformer"
+      ],
+      [
+        "RAG_Survey_2024",
+        "introduces",
+        "evaluation benchmark"
+      ]
+    ],
+    "RAPTOR_2024": [
+      [
+        "RAPTOR",
+        "is_a",
+        "retrieval-augmented language model"
+      ],
+      [
+        "RAPTOR",
+        "uses",
+        "recursive embedding"
+      ],
+      [
+        "RAPTOR",
+        "uses",
+        "clustering"
+      ],
+      [
+        "RAPTOR",
+        "uses",
+        "summarization"
+      ],
+      [
+        "RAPTOR",
+        "constructs",
+        "tree"
+      ],
+      [
+        "RAPTOR",
+        "retrieves from",
+        "tree"
+      ],
+      [
+        "RAPTOR",
+        "improves_on",
+        "traditional retrieval-augmented LMs"
+      ],
+      [
+        "RAPTOR",
+        "based_on",
+        "text summarization"
+      ],
+      [
+        "RAPTOR",
+        "evaluated_on",
+        "NarrativeQA"
+      ],
+      [
+        "RAPTOR",
+        "evaluated_on",
+        "QASPER"
+      ],
+      [
+        "RAPTOR",
+        "evaluated_on",
+        "QuALITY"
+      ],
+      [
+        "GPT-4",
+        "used_with",
+        "RAPTOR"
+      ],
+      [
+        "UnifiedQA",
+        "used_with",
+        "RAPTOR"
+      ],
+      [
+        "tree",
+        "has_levels",
+        "summarization"
+      ]
+    ],
+    "ReAct_2022": [
+      [
+        "ReAct",
+        "is_a",
+        "reasoning-and-acting paradigm"
+      ],
+      [
+        "ReAct",
+        "improves_on",
+        "chain-of-thought prompting"
+      ],
+      [
+        "ReAct",
+        "interacts_with",
+        "Wikipedia API"
+      ],
+      [
+        "ReAct",
+        "mitigates",
+        "hallucination"
+      ],
+      [
+        "ReAct",
+        "mitigates",
+        "error propagation"
+      ],
+      [
+        "ReAct",
+        "evaluated_on",
+        "HotpotQA"
+      ],
+      [
+        "ReAct",
+        "evaluated_on",
+        "Fever"
+      ],
+      [
+        "ReAct",
+        "evaluated_on",
+        "ALFWorld"
+      ],
+      [
+        "ReAct",
+        "evaluated_on",
+        "WebShop"
+      ],
+      [
+        "ReAct",
+        "outperforms",
+        "imitation learning"
+      ],
+      [
+        "ReAct",
+        "outperforms",
+        "reinforcement learning"
+      ],
+      [
+        "HotpotQA",
+        "is_a",
+        "question answering benchmark"
+      ],
+      [
+        "Fever",
+        "is_a",
+        "fact verification benchmark"
+      ],
+      [
+        "ALFWorld",
+        "is_a",
+        "interactive decision making benchmark"
+      ],
+      [
+        "WebShop",
+        "is_a",
+        "interactive decision making benchmark"
+      ]
+    ],
+    "Self_RAG_2023": [
+      [
+        "Self-RAG",
+        "is_a",
+        "retrieval-augmented generation"
+      ],
+      [
+        "Self-RAG",
+        "improves_on",
+        "RAG"
+      ],
+      [
+        "Self-RAG",
+        "uses",
+        "reflection tokens"
+      ],
+      [
+        "Self-RAG",
+        "uses",
+        "retriever"
+      ],
+      [
+        "Self-RAG",
+        "performs",
+        "on-demand retrieval"
+      ],
+      [
+        "Self-RAG",
+        "generates",
+        "critique tokens"
+      ],
+      [
+        "Self-RAG",
+        "generates",
+        "task output"
+      ],
+      [
+        "reflection tokens",
+        "include",
+        "retrieval tokens"
+      ],
+      [
+        "reflection tokens",
+        "include",
+        "critique tokens"
+      ]
+    ],
+    "vLLM_2023": [
+      [
+        "vLLM_2023",
+        "proposes",
+        "PagedAttention"
+      ],
+      [
+        "PagedAttention",
+        "based_on",
+        "virtual memory"
+      ],
+      [
+        "PagedAttention",
+        "based_on",
+        "paging"
+      ],
+      [
+        "vLLM",
+        "uses",
+        "PagedAttention"
+      ],
+      [
+        "vLLM",
+        "improves_on",
+        "FasterTransformer"
+      ],
+      [
+        "vLLM",
+        "improves_on",
+        "Orca"
+      ],
+      [
+        "KV cache",
+        "is_a",
+        "dynamic memory"
+      ],
+      [
+        "PagedAttention",
+        "manages",
+        "KV cache"
+      ],
+      [
+        "PagedAttention",
+        "inspired_by",
+        "operating systems"
+      ],
+      [
+        "vLLM",
+        "achieves",
+        "near-zero waste"
+      ],
+      [
+        "vLLM",
+        "enables",
+        "flexible sharing"
+      ],
+      [
+        "attention",
+        "uses",
+        "KV cache"
+      ],
+      [
+        "Transformer",
+        "is_a",
+        "autoregressive model"
+      ],
+      [
+        "vLLM",
+        "is_a",
+        "LLM serving system"
+      ],
+      [
+        "PagedAttention",
+        "is_a",
+        "attention algorithm"
+      ]
+    ],
+    "Tree_of_Thoughts_2023": [
+      [
+        "Tree_of_Thoughts_2023",
+        "proposes",
+        "Tree of Thoughts"
+      ],
+      [
+        "Tree of Thoughts",
+        "generalizes_over",
+        "Chain of Thought"
+      ],
+      [
+        "Tree of Thoughts",
+        "improves_on",
+        "Chain of Thought"
+      ],
+      [
+        "Tree of Thoughts",
+        "is_a",
+        "problem-solving framework"
+      ],
+      [
+        "Tree of Thoughts",
+        "uses",
+        "breadth-first search"
+      ],
+      [
+        "Tree of Thoughts",
+        "uses",
+        "depth-first search"
+      ],
+      [
+        "Tree of Thoughts",
+        "enables",
+        "self-evaluation"
+      ],
+      [
+        "Tree of Thoughts",
+        "enables",
+        "lookahead"
+      ],
+      [
+        "Tree of Thoughts",
+        "enables",
+        "backtracking"
+      ],
+      [
+        "Tree of Thoughts",
+        "maintains",
+        "tree of thoughts"
+      ],
+      [
+        "thought",
+        "is_a",
+        "coherent language sequence"
+      ]
+    ]
+  },
+  "errors": {}
+}

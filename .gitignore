@@ -22,3 +22,6 @@ __pycache__/
 .DS_Store
 .idea/
 .vscode/
+
+# ── 第三方前端运行时库（可由 npm/CDN 恢复，不进版本库）──
+lib/

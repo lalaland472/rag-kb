@@ -1,0 +1,313 @@
+{
+  "model": "deepseek-v4-flash",
+  "flat_avg_cov": 0.44791666666666663,
+  "graphrag_avg_cov": 0.625,
+  "rows": [
+    {
+      "id": "G1",
+      "q": "这个语料库整体讲了哪些 AI 技术主题？",
+      "topics": [
+        "RAG",
+        "Agent",
+        "微调",
+        "Transformer"
+      ],
+      "flat": {
+        "covered": [
+          "RAG",
+          "微调"
+        ],
+        "missed": [
+          "Agent",
+          "Transformer"
+        ],
+        "coverage": 0.5,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 63.6,
+        "excerpt": "根据提供的片段，语料库主要涉及 **RAG（检索增强生成）** 技术主题，包括其演进的三种范式（Naive、Advanced、Modular RAG），以及 R"
+      },
+      "graphrag": {
+        "covered": [
+          "RAG",
+          "Transformer"
+        ],
+        "missed": [
+          "Agent",
+          "微调"
+        ],
+        "coverage": 0.5,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 17.4,
+        "excerpt": "本语料库围绕大语言模型（LLM）的核心技术展开，覆盖从基础架构到训练、增强、部署与评估的完整链路。主要主题及其关系如下：\n\n1. **基础架构：Transfor"
+      }
+    },
+    {
+      "id": "G2",
+      "q": "检索增强生成(RAG)这个方向在这个语料库里经历了怎样的演进？有哪些变体？",
+      "topics": [
+        "RAG",
+        "Self-RAG",
+        "GraphRAG",
+        "向量检索"
+      ],
+      "flat": {
+        "covered": [
+          "RAG"
+        ],
+        "missed": [
+          "Self-RAG",
+          "GraphRAG",
+          "向量检索"
+        ],
+        "coverage": 0.25,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 30.5,
+        "excerpt": "根据提供的片段，检索增强生成（RAG）在该语料库中的演进可以概括为三个发展范式：**Naive RAG（朴素RAG）**、**Advanced RAG（高级RA"
+      },
+      "graphrag": {
+        "covered": [
+          "RAG",
+          "Self-RAG",
+          "GraphRAG",
+          "向量检索"
+        ],
+        "missed": [],
+        "coverage": 1.0,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 9.7,
+        "excerpt": "该语料库中检索增强生成（RAG）的演进可归纳为一条从基础范式到智能化、图谱化变体的主线，并伴随评估方法的同步发展。各主题间的关系如下：\n\n1. **基础范式演进"
+      }
+    },
+    {
+      "id": "G3",
+      "q": "Agent 智能体这个方向有哪些代表工作？它们各自怎么组织智能体？",
+      "topics": [
+        "AutoGen",
+        "ReAct",
+        "生成式智能体",
+        "工具"
+      ],
+      "flat": {
+        "covered": [
+          "AutoGen"
+        ],
+        "missed": [
+          "ReAct",
+          "生成式智能体",
+          "工具"
+        ],
+        "coverage": 0.25,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 30.1,
+        "excerpt": "根据提供的资料，Agent 智能体方向的代表工作主要有两个：**Generative Agents** 和 **AutoGen**。\n\n1. **Generat"
+      },
+      "graphrag": {
+        "covered": [
+          "AutoGen",
+          "ReAct",
+          "生成式智能体",
+          "工具"
+        ],
+        "missed": [],
+        "coverage": 1.0,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 14.9,
+        "excerpt": "以下是针对全局问题的整合回答，涵盖各主题代表工作及其组织智能体的方式，并说明它们之间的关系。\n\n### 一、代表工作及各自组织方式\n\n1. **AutoGen（"
+      }
+    },
+    {
+      "id": "G4",
+      "q": "大模型高效化（微调和推理加速）涉及哪些技术？",
+      "topics": [
+        "LoRA",
+        "量化",
+        "vLLM",
+        "KV cache"
+      ],
+      "flat": {
+        "covered": [
+          "量化"
+        ],
+        "missed": [
+          "LoRA",
+          "vLLM",
+          "KV cache"
+        ],
+        "coverage": 0.25,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 29.1,
+        "excerpt": "根据提供的片段，大模型高效化涉及以下技术：\n\n- **模型压缩/量化**：如 GPTQ 提出的一种基于近似二阶信息的一次性权重量化方法，通过量化模型权重来减少内"
+      },
+      "graphrag": {
+        "covered": [
+          "量化"
+        ],
+        "missed": [
+          "LoRA",
+          "vLLM",
+          "KV cache"
+        ],
+        "coverage": 0.25,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 19.6,
+        "excerpt": "大模型高效化涉及的技术不是单一方法，而是从模型架构、训练微调、模型压缩到推理计算的多层次协同优化。根据社区摘要，可整合为以下几大主题：\n\n1. **基础架构与注"
+      }
+    },
+    {
+      "id": "G5",
+      "q": "大模型对齐（让模型符合人类偏好）的主流方法有哪些？",
+      "topics": [
+        "RLHF",
+        "DPO",
+        "奖励模型"
+      ],
+      "flat": {
+        "covered": [
+          "RLHF",
+          "DPO",
+          "奖励模型"
+        ],
+        "missed": [],
+        "coverage": 1.0,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 25.7,
+        "excerpt": "根据提供的资料，大模型对齐的主流方法包括：\n\n- **基于人类反馈的强化学习（RLHF）**：先拟合一个反映人类偏好的奖励模型，再用强化学习微调语言模型，以最大"
+      },
+      "graphrag": {
+        "covered": [
+          "RLHF",
+          "DPO",
+          "奖励模型"
+        ],
+        "missed": [],
+        "coverage": 1.0,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 17.3,
+        "excerpt": "大模型对齐的主流方法可以从“参数训练”和“推理时外部机制”两个层面来看，不同技术社区侧重点有所不同。综合各社区观点，主要方法及关系如下：\n\n1. **基于人类反"
+      }
+    },
+    {
+      "id": "G6",
+      "q": "从知识表示和检索的角度，语料库覆盖了哪些组织知识的方式？",
+      "topics": [
+        "向量检索",
+        "图结构",
+        "树结构",
+        "摘要"
+      ],
+      "flat": {
+        "covered": [],
+        "missed": [
+          "向量检索",
+          "图结构",
+          "树结构",
+          "摘要"
+        ],
+        "coverage": 0.0,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 32.4,
+        "excerpt": "根据提供的片段，从知识表示和检索的角度，语料库覆盖的组织知识方式包括：\n\n- **非结构化数据（文本）**：如维基百科等文本语料，是最常用的检索源 [1]。\n-"
+      },
+      "graphrag": {
+        "covered": [
+          "摘要"
+        ],
+        "missed": [
+          "向量检索",
+          "图结构",
+          "树结构"
+        ],
+        "coverage": 0.25,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 19.7,
+        "excerpt": "从知识表示和检索的角度，语料库覆盖了多种互补的组织知识方式，它们共同构成了一条“表示—索引—检索—对齐—部署”的完整链条：\n\n1. **基于模型参数的隐式知识组"
+      }
+    },
+    {
+      "id": "G7",
+      "q": "这个语料库在模型评估方面用了哪些基准和方法？",
+      "topics": [
+        "benchmark",
+        "LLM-as-a-judge",
+        "评估"
+      ],
+      "flat": {
+        "covered": [
+          "LLM-as-a-judge",
+          "评估"
+        ],
+        "missed": [
+          "benchmark"
+        ],
+        "coverage": 0.6666666666666666,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 32.6,
+        "excerpt": "根据提供的资料，关于语料库在模型评估中使用的基准和方法可归纳为：\n\n- 提出了用于评估的工具和基准测试，提供定量指标来衡量模型性能并理解模型能力 [2]。\n- "
+      },
+      "graphrag": {
+        "covered": [
+          "评估"
+        ],
+        "missed": [
+          "benchmark",
+          "LLM-as-a-judge"
+        ],
+        "coverage": 0.3333333333333333,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 17.9,
+        "excerpt": "该语料库在模型评估方面没有统一方案，而是针对不同技术主题采用了多样化的基准和方法。主要主题及其关系如下：\n\n- **Transformer与注意力机制评估**："
+      }
+    },
+    {
+      "id": "G8",
+      "q": "Transformer 及其注意力机制在语料库中是怎么演进和应用的？",
+      "topics": [
+        "Transformer",
+        "attention",
+        "FlashAttention"
+      ],
+      "flat": {
+        "covered": [
+          "Transformer",
+          "attention"
+        ],
+        "missed": [
+          "FlashAttention"
+        ],
+        "coverage": 0.6666666666666666,
+        "is_honest": true,
+        "has_content": false,
+        "latency": 39.1,
+        "excerpt": "根据提供的片段，Transformer 及其注意力机制的演进和应用主要体现在以下几点：\n\n- Transformer 完全依赖自注意力（self-attenti"
+      },
+      "graphrag": {
+        "covered": [
+          "Transformer",
+          "attention"
+        ],
+        "missed": [
+          "FlashAttention"
+        ],
+        "coverage": 0.6666666666666666,
+        "is_honest": false,
+        "has_content": true,
+        "latency": 9.2,
+        "excerpt": "Transformer 及其注意力机制在本社区的演进与应用，可以归纳为两条主线：一条是**模型架构本身的变革**，另一条是**推理部署效率的系统级优化**。两者"
+      }
+    }
+  ]
+}

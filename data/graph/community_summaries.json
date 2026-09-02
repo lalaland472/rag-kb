@@ -1,0 +1,327 @@
+{
+  "model": "deepseek-v4-flash",
+  "min_size": 8,
+  "communities": {
+    "0": {
+      "members": [
+        "175 billion",
+        "GPT-3",
+        "SuperGLUE",
+        "arithmetic",
+        "autoregressive language model",
+        "cloze task",
+        "common sense reasoning",
+        "human demonstration",
+        "large web corpora",
+        "news articles",
+        "previous language models",
+        "question-answering",
+        "supervised learning",
+        "translation"
+      ],
+      "summary": "这个社区围绕 GPT-3 这一自回归语言模型展开，其核心特点是拥有 1750 亿参数，并在大规模网页语料上训练，从而显著优于此前模型。GPT-3 可执行翻译、问答、完形填空和算术等任务，也能生成新闻文章，但在常识推理上仍有不足。它通过监督学习结合人类演示进行微调，并以 SuperGLUE 等基准评估性能。"
+    },
+    "3": {
+      "members": [
+        "Advanced RAG",
+        "Modular RAG",
+        "Naive RAG",
+        "RAG",
+        "Self-RAG",
+        "augmentation",
+        "critique tokens",
+        "evaluation benchmark",
+        "external knowledge base",
+        "generation",
+        "global sensemaking queries",
+        "natural language",
+        "non-parametric memory",
+        "on-demand retrieval",
+        "parametric memory",
+        "reflection tokens",
+        "retrieval",
+        "retrieval tokens",
+        "retrieval-augmented generation",
+        "retriever",
+        "semantic similarity",
+        "task output"
+      ],
+      "summary": "这个社区聚焦于检索增强生成（RAG）技术，涵盖从Naive RAG到Advanced RAG、Modular RAG及Self-RAG的演进。其核心是将外部知识库的检索（基于语义相似度）与参数化记忆的生成相结合，并通过“反思标记”与“检索标记”实现按需检索和自我评判，同时引入评估基准来解决全局理解性查询等挑战。"
+    },
+    "1": {
+      "members": [
+        "ALFWorld",
+        "Fever",
+        "HotpotQA",
+        "ReAct",
+        "WebShop",
+        "Wikipedia API",
+        "chain-of-thought prompting",
+        "error propagation",
+        "fact verification benchmark",
+        "imitation learning",
+        "interactive decision making benchmark",
+        "question answering benchmark",
+        "reasoning-and-acting paradigm"
+      ],
+      "summary": "这个社区围绕 **ReAct（推理-行动范式）** 展开，核心思想是将大语言模型的 **chain-of-thought 推理** 与对外部工具（如 Wikipedia API）的 **交互行动** 相结合，以缓解推理中的错误传播。该模型在 **问答（HotpotQA）、事实核查（Fever）** 和 **交互决策（ALFWorld、WebShop）** 等基准上验证了有效性，并优于模仿学习基线。"
+    },
+    "2": {
+      "members": [
+        "Adam",
+        "LoRA",
+        "all model parameters",
+        "few-shot learning",
+        "fine-tuning",
+        "low-rank adaptation",
+        "pre-trained model weights",
+        "rank decomposition matrices",
+        "task-specific dataset",
+        "trainable parameters"
+      ],
+      "summary": "这个社区围绕大模型参数高效微调技术，核心是 LoRA（低秩适应）。LoRA 通过冻结预训练模型权重并注入低秩分解矩阵，仅训练少量参数，显著减少可训练参数量，同时使用 Adam 优化器并在少样本场景下比全量微调更高效。社区中少样本学习避免传统微调，而 LoRA 作为对微调的改进，解决了其需要重训全部参数且依赖任务数据集的问题。"
+    },
+    "4": {
+      "members": [
+        "AutoGen",
+        "LLM",
+        "LLM application",
+        "conversable agent",
+        "customized",
+        "flexible conversation patterns",
+        "hallucination",
+        "hierarchical chat",
+        "human input",
+        "in-context learning",
+        "joint chat",
+        "multi-agent",
+        "multi-agent conversation",
+        "multi-agent conversation framework",
+        "multi-agent conversations",
+        "tool"
+      ],
+      "summary": "该社区围绕 AutoGen 这一多智能体对话框架展开，其核心是基于可定制、可组合的 conversable agent，通过多智能体间的灵活对话模式（如层级聊天、联合聊天）来构建 LLM 应用。这些代理可调用 LLM、工具和人类输入，并利用上下文学习解决复杂任务，同时需应对 LLM 的幻觉挑战。整体上，社区强调用对话式多智能体协作提升 LLM 应用的适应性与可控性。"
+    },
+    "8": {
+      "members": [
+        "Bradley-Terry model",
+        "DPO",
+        "GPT-4",
+        "InstructGPT",
+        "PPO",
+        "PPO-based RLHF",
+        "RLHF",
+        "classification loss",
+        "fine-tuned language model",
+        "fine-tuning pipeline",
+        "human feedback",
+        "human preferences",
+        "implicit reward model",
+        "instruction-following language model",
+        "language model",
+        "language model policy",
+        "preference optimization method",
+        "reinforcement learning",
+        "reward function",
+        "reward model"
+      ],
+      "summary": "这个社区代表“基于人类反馈的语言模型对齐”技术领域，核心围绕 RLHF 与 DPO 两种偏好优化方法。RLHF 通过训练奖励模型并用 PPO 强化学习微调语言模型（如 InstructGPT）；DPO 则直接利用 Bradley-Terry 模型和隐式奖励，以分类损失替代 RLHF 中的显式奖励建模与采样，从而简化流程并改进 PPO-based RLHF。各实体通过“人类偏好—奖励模型—策略优化”这条主线紧密关联，最终目标是让语言模型（如 GPT-4）更好地符合人类偏好。"
+    },
+    "6": {
+      "members": [
+        "BLEU score",
+        "BLOOM",
+        "English constituency parsing",
+        "GPT",
+        "GPTQ",
+        "OPT",
+        "RNN",
+        "Transformer",
+        "WMT 2014",
+        "approximate second-order information",
+        "attention",
+        "autoregressive model",
+        "bitwidth",
+        "convolution",
+        "encoder and decoder",
+        "fine-tuning approach",
+        "inference speedup",
+        "multi-head attention",
+        "neural network architecture",
+        "position encoding",
+        "post-training quantization",
+        "pre-trained language model",
+        "quadratic complexity",
+        "recurrent neural network",
+        "round-to-nearest quantization",
+        "scaled dot-product attention",
+        "self-attention",
+        "single-GPU inference"
+      ],
+      "summary": "这个社区围绕 Transformer 架构及其核心的注意力机制展开，强调用自注意力、多头注意力和位置编码替代 RNN/卷积，并在 WMT 2014 机器翻译和英语句法解析等任务上取得突破。同时，社区也关注对 GPT、OPT、BLOOM 等预训练模型的压缩，代表性方法是 GPTQ——一种利用近似二阶信息的后训练量化技术，通过降低位宽实现单 GPU 推理加速。整体上，社区将 Transformer 作为基础模型架构，并将量化压缩作为其高效部署的关键配套技术。"
+    },
+    "5": {
+      "members": [
+        "BERT",
+        "ELMo",
+        "FlashAttention",
+        "GLUE",
+        "HBM accesses",
+        "IO-aware exact attention algorithm",
+        "SQuAD",
+        "approximate attention method",
+        "bidirectional representations",
+        "block-sparse attention",
+        "feature-based approach",
+        "language representation model",
+        "longer context",
+        "masked language model",
+        "memory reads/writes",
+        "next sentence prediction",
+        "standard attention",
+        "state-of-the-art results",
+        "task-specific architecture",
+        "tiling"
+      ],
+      "summary": "该社区涵盖语言表示模型与注意力机制两大方向：BERT 通过掩码语言模型和下一句预测实现双向表示，优于 ELMo 等特征式方法，并在 GLUE/SQuAD 上取得领先；FlashAttention 则通过 tiling 和 IO 感知的精确注意力计算，减少 HBM 访问与内存读写，改进标准注意力，并可扩展为块稀疏近似的近似注意力方法。两者共同推动了从任务特定架构到预训练模型、从标准注意力到高效长上下文建模的发展。"
+    },
+    "10": {
+      "members": [
+        "Chain of Thought",
+        "Tree of Thoughts",
+        "backtracking",
+        "breadth-first search",
+        "depth-first search",
+        "lookahead",
+        "problem-solving framework",
+        "self-evaluation",
+        "tree of thoughts"
+      ],
+      "summary": "这个社区围绕 **Tree of Thoughts（思维树）** 技术主题展开，它是 Chain of Thought（思维链）的泛化与改进，核心将问题求解从线性链式推理扩展为树状搜索过程。该方法通过 **广度优先搜索/深度优先搜索** 遍历思维树，并整合 **回溯、前瞻（lookahead）与自我评估** 机制，从而在分支探索中筛选更优推理路径。所有成员均通过 ToT 这一“问题解决框架”相互关联，共同服务于更复杂、更灵活的推理任务。"
+    },
+    "7": {
+      "members": [
+        "FasterTransformer",
+        "KV cache",
+        "LLM serving system",
+        "Orca",
+        "PagedAttention",
+        "attention algorithm",
+        "dynamic memory",
+        "flexible sharing",
+        "near-zero waste",
+        "operating system",
+        "paging",
+        "vLLM",
+        "virtual memory"
+      ],
+      "summary": "这个社区围绕大语言模型（LLM）服务系统 vLLM 展开，核心创新是 PagedAttention 注意力算法。PagedAttention 受操作系统虚拟内存与分页机制启发，将 KV cache 视为动态内存进行分页管理，从而在推理时实现接近零的内存浪费，并支持灵活的 KV cache 共享。该方法改善了 FasterTransformer、Orca 等既有系统的性能，为 LLM 高效服务提供了关键支撑。"
+    },
+    "13": {
+      "members": [
+        "FAISS",
+        "GPU k-selection algorithm",
+        "GPUs",
+        "IVFADC",
+        "OPQ",
+        "k-NN graph",
+        "prior GPU state of the art",
+        "product quantization",
+        "vector compression method"
+      ],
+      "summary": "这个社区围绕 FAISS 这一 GPU 加速的近似最近邻搜索库展开，核心方法是基于乘积量化（PQ）的向量压缩，并辅以 IVFADC 索引结构和 OPQ 优化，同时提出高效的 GPU k-selection 算法以改进此前最优实现。这些方法共同服务于大规模 k-NN 图的构建，通过压缩向量、优化检索与排序流程，在 GPU 上实现更快的相似性搜索。"
+    },
+    "12": {
+      "members": [
+        "Contriever",
+        "HyDE",
+        "Lost_in_the_Middle",
+        "fine-tuned retrievers",
+        "hypothetical document",
+        "key-value retrieval",
+        "language",
+        "long-context language model",
+        "multi-document question answering",
+        "no relevance labels",
+        "task",
+        "unsupervised contrastive encoder",
+        "zero-shot dense retrieval"
+      ],
+      "summary": "这个社区主要围绕两个相关主题：一是基于 HyDE 的零样本稠密检索方法，它通过使用无监督对比编码器 Contriever 生成“假设文档”来弥合查询与文档间的语义鸿沟，无需标注数据即可超越微调检索器；二是针对长上下文语言模型的分析研究，即 Lost_in_the_Middle 揭示了这类模型在多文档问答和键值检索任务中会忽视中间位置信息的现象。两者通过“任务”（如多文档问答）和“检索/上下文利用”的关联，共同关注如何提升模型在复杂信息获取场景中的表现。"
+    },
+    "18": {
+      "members": [
+        "Generative Agents",
+        "The Sims",
+        "experience",
+        "human behavior",
+        "interactive simulacra of human behavior",
+        "large language model",
+        "memory",
+        "observation",
+        "planning",
+        "reflection",
+        "sandbox environment"
+      ],
+      "summary": "这个社区围绕生成式智能体（Generative Agents）展开，核心是用大语言模型驱动交互式人类行为模拟，使其在沙盒环境中（受《模拟人生》启发）呈现出可信的社会行为。关键机制包括：通过观察和记忆存储经验，利用反思对记忆进行综合与改进，并借助规划来检索记忆以指导行动，从而构成“感知—记忆—反思—规划”的闭环。整个社区代表了以LLM为认知核心、模拟类人行为的智能体技术方向。"
+    },
+    "22": {
+      "members": [
+        "LLM agent",
+        "MATH dataset",
+        "MathChat",
+        "Program Synthesis",
+        "Program of Thoughts",
+        "Python",
+        "code execution",
+        "conversational problem-solving framework",
+        "multi-agent collaboration",
+        "tool execution",
+        "user proxy agent"
+      ],
+      "summary": "该社区以 **MathChat** 为核心，代表一种基于多智能体协作的对话式数学问题求解框架。其核心方法是将 **LLM agent** 与 **user proxy agent** 配合，通过 **Python 代码执行**和工具调用完成推理，并在 **MATH dataset** 上评估。MathChat 在 **Program of Thoughts** 和 **Program Synthesis** 的基础上引入对话式协作机制，实现了对这两类方法的改进。"
+    },
+    "9": {
+      "members": [
+        "NarrativeQA",
+        "QASPER",
+        "QuALITY",
+        "RAPTOR",
+        "UnifiedQA",
+        "clustering",
+        "recursive embedding",
+        "retrieval-augmented language model",
+        "summarization",
+        "text summarization",
+        "traditional retrieval-augmented LMs",
+        "tree"
+      ],
+      "summary": "该社区围绕 RAPTOR 这一检索增强语言模型展开，核心方法是通过递归嵌入和聚类将文本构建成多级树结构，并在各层级进行摘要，以实现分层检索。它改进了传统检索增强 LMs，并与 UnifiedQA 结合，在 NarrativeQA、QASPER、QuALITY 等阅读理解数据集上评估。整体技术主题是“基于树结构的递归摘要与检索增强生成”。"
+    },
+    "19": {
+      "members": [
+        "GraphRAG",
+        "LLM-as-a-judge",
+        "LLaMA",
+        "LangChain",
+        "MT-Bench",
+        "Vicuna",
+        "benchmark",
+        "chat assistant",
+        "community summaries",
+        "entity",
+        "entity knowledge graph",
+        "graph-based RAG",
+        "hierarchical communities",
+        "knowledge graph",
+        "map-reduce",
+        "position bias",
+        "query-focused summarization",
+        "self-enhancement bias",
+        "vector RAG",
+        "verbosity bias"
+      ],
+      "summary": "该社区围绕图增强检索生成（GraphRAG）及其评估方法展开：GraphRAG 通过构建实体知识图谱、层次化社区摘要和 map-reduce 机制改进传统向量 RAG，并集成于 LangChain。另一核心是 LLM-as-a-judge，由 MT-Bench 基准提出，用于评估聊天助手及 RAG 系统，但存在位置、冗长和自我增强等偏差。二者关联在于 LLM-as-a-judge 被用于评测 GraphRAG 与向量 RAG 的性能。"
+    }
+  }
+}
