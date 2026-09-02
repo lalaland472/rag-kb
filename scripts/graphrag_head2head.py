@@ -2,16 +2,17 @@
 """全局问答 head-to-head 小评测：RAG(flat) vs GraphRAG —— 方法二
 
 方法一（graphrag_benchmark.py）用【关键词覆盖度】量化回答提到了几个期望主题；
-本脚本是【方法二】：LLM-as-Judge 盲评（head-to-head），按论文评测惯例用三标准给分。
+本脚本是【方法二】：LLM-as-Judge 盲评（head-to-head），按论文评测惯例用四标准给分。
 
-三标准（论文用）：
+四标准（论文用）：
   1. 忠实性 Faithfulness  —— 是否严格基于语料/材料，无幻觉、无凭空捏造   (0-10)
   2. 完整性 Completeness  —— 是否覆盖全局问题的全部关键维度，不片面     (0-10)
   3. 可溯源 Traceability  —— 归纳是否清晰、结构化、有依据可查（社区/层次） (0-10)
+  4. 多样性 Diversity      —— 是否从多角度/多层面/多侧面展开，视角丰富     (0-10)
 
 流程：
   1. 对每条全局问题分别生成 flat 与 graphrag 回答
-  2. 打乱顺序、匿名（blind）交给 judge 按三标准逐条打分
+  2. 打乱顺序、匿名（blind）交给 judge 按四标准逐条打分
   3. 汇总每标准均值 + 每局胜负（总分对比）→ 输出报告
 
 用法：python3 scripts/graphrag_head2head.py
@@ -66,14 +67,15 @@ def call_llm(prompt, mt=900, temp=0.2, model=None, disable_thinking=False):
     return ""
 
 JUDGE_SYSTEM = """你是一位严谨的 RAG 系统评测专家。下面有两个匿名系统（系统A、系统B）对一个"面向整个语料库的全局问题"的回答。
-请按三个标准分别给两个回答打分（0-10，可带小数）：
+请按四个标准分别给两个回答打分（0-10，可带小数）：
 1. 忠实性 Faithfulness：回答是否严格基于语料材料，无幻觉、无凭空捏造
 2. 完整性 Completeness：是否覆盖问题的全部关键维度，不片面、不遗漏
 3. 可溯源 Traceability：归纳是否清晰、结构化、层次分明、有依据可查
+4. 多样性 Diversity：是否从多种不同的角度/层面/侧面展开回答，视角丰富，而非单一维度
 
 只输出 JSON，格式：
-{"A": {"faithfulness": x, "completeness": y, "traceability": z},
- "B": {"faithfulness": a, "completeness": b, "traceability": c},
+{"A": {"faithfulness": x, "completeness": y, "traceability": z, "diversity": d},
+ "B": {"faithfulness": a, "completeness": b, "traceability": c, "diversity": e},
  "winner": "A"|"B"|"tie",
  "reason": "一句话说明胜负原因"}"""
 
@@ -105,10 +107,10 @@ def judge(q, ans_a, ans_b):
 
 def main():
     print(f"全局问答 head-to-head 盲评：RAG(flat) vs GraphRAG | judge={JUDGE_MODEL}")
-    print(f"三标准：忠实性/完整性/可溯源 (0-10) | {len(GLOBAL_TEST)} 条全局问题")
+    print(f"四标准：忠实性/完整性/可溯源/多样性 (0-10) | {len(GLOBAL_TEST)} 条全局问题")
     print("=" * 76)
     rows = []
-    agg = {"flat": [0.0, 0.0, 0.0], "graphrag": [0.0, 0.0, 0.0]}
+    agg = {"flat": [0.0, 0.0, 0.0, 0.0], "graphrag": [0.0, 0.0, 0.0, 0.0]}
     win = {"flat": 0, "graphrag": 0, "tie": 0}
     for qid, q, topics in GLOBAL_TEST:
         # 生成回答
@@ -127,10 +129,11 @@ def main():
         def scores(name):
             k = "A" if name == name_a else "B"
             s = res[k]
-            return [float(s.get("faithfulness", 0)), float(s.get("completeness", 0)), float(s.get("traceability", 0))]
+            return [float(s.get("faithfulness", 0)), float(s.get("completeness", 0)),
+                    float(s.get("traceability", 0)), float(s.get("diversity", 0))]
         fs = scores("flat")
         gs = scores("graphrag")
-        for i in range(3):
+        for i in range(4):
             agg["flat"][i] += fs[i]
             agg["graphrag"][i] += gs[i]
         winner = {"A": name_a, "B": name_b, "tie": "tie"}.get(res.get("winner"), "tie")
@@ -144,13 +147,13 @@ def main():
                      "flat": {"scores": fs, "excerpt": ans_f[:70]},
                      "graphrag": {"scores": gs, "excerpt": ans_g[:70]},
                      "winner": winner, "reason": res.get("reason", "")})
-        print(f"[{qid}] flat={fs[0]:.0f}/{fs[1]:.0f}/{fs[2]:.0f} "
-              f"graphrag={gs[0]:.0f}/{gs[1]:.0f}/{gs[2]:.0f} → {'flat' if winner=='flat' else 'graphrag' if winner=='graphrag' else '平'}")
+        print(f"[{qid}] flat={fs[0]:.0f}/{fs[1]:.0f}/{fs[2]:.0f}/{fs[3]:.0f} "
+              f"graphrag={gs[0]:.0f}/{gs[1]:.0f}/{gs[2]:.0f}/{gs[3]:.0f} → {'flat' if winner=='flat' else 'graphrag' if winner=='graphrag' else '平'}")
 
     print("=" * 76)
     n = len(rows) or 1
     print(f"\n{'标准':<8}{'RAG(flat)':<12}{'GraphRAG':<12}{'差值'}")
-    names = ["忠实性", "完整性", "可溯源"]
+    names = ["忠实性", "完整性", "可溯源", "多样性"]
     diff_total = 0
     for i, nm in enumerate(names):
         f = agg["flat"][i] / n
@@ -159,12 +162,12 @@ def main():
         print(f"{nm:<8}{f:<12.1f}{g:<12.1f}{g - f:+.1f}")
     print(f"\n总分均值  flat={sum(agg['flat'])/n:.1f}  graphrag={sum(agg['graphrag'])/n:.1f}  ({'+' if diff_total>=0 else ''}{diff_total:.1f})")
     print(f"胜负     flat {win['flat']} 胜 / graphrag {win['graphrag']} 胜 / 平 {win['tie']}")
-    print(f"\n评价小结：GraphRAG 在三标准下{'全面占优' if (win['graphrag']>win['flat'] and diff_total>0) else '与 flat 互有胜负' if win['graphrag']==win['flat'] else '略处下风'}")
+    print(f"\n评价小结：GraphRAG 在四标准下{'全面占优' if (win['graphrag']>win['flat'] and diff_total>0) else '与 flat 互有胜负' if win['graphrag']==win['flat'] else '略处下风'}")
 
     out = "data/graph/head2head.json"
     json.dump({"model": MODEL, "criteria": names, "n": len(rows),
-               "avg": {"flat": [round(agg['flat'][i]/n,2) for i in range(3)],
-                       "graphrag": [round(agg['graphrag'][i]/n,2) for i in range(3)]},
+               "avg": {"flat": [round(agg['flat'][i]/n,2) for i in range(4)],
+                       "graphrag": [round(agg['graphrag'][i]/n,2) for i in range(4)]},
                "total": {"flat": round(sum(agg['flat'])/n,2),
                          "graphrag": round(sum(agg['graphrag'])/n,2)},
                "wins": win, "rows": rows},
